@@ -4,9 +4,9 @@ import {
   faTemperature0,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import axios from "axios";
+import axios from "axios";
 import React from "react";
-// import { useQuery } from "react-query";
+import { useQuery } from "react-query";
 import {
   Bar,
   BarChart,
@@ -17,22 +17,17 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { tempData } from "../data/tempData";
-import { humidData } from "../data/humidData";
+// import { tempData } from "../data/tempData";
+// import { humidData } from "../data/humidData";
 
 function Machine() {
-  // const { isLoading, data } = useQuery("tempData", () => {
-  // const { status, data } = useQuery("tempData", () => {
-  //   return axios.get("http://192.168.90.17:8080/test");
-  // });
+  
+  const {data} = useQuery("tempData", () => axios.get("http://localhost:3004/tempData"));
+  
+  const {data:humidData} = useQuery("humidData", () => axios.get("http://localhost:3004/humidData"));
 
-  // if (isLoading) {
-  //   return <h2>Loading...</h2>;
-  // } 
-  // OR
-  // if (status === "loading") {
-  //   return <h2>Loading...</h2>;
-  // } 
+
+
   return (
     <div className="px-4 md:px-16">
       <p className="text-gray-700 text-3xl mb-16 font-bold">Machine</p>
@@ -74,7 +69,7 @@ function Machine() {
           <BarChart
             width={500}
             height={300}
-            data={tempData}
+            data={data?data.data:null}
             margin={{
               top: 5,
               right: 30,
@@ -99,7 +94,7 @@ function Machine() {
           <BarChart
             width={500}
             height={300}
-            data={humidData}
+            data={humidData?humidData.data:null}
             margin={{
               top: 5,
               right: 30,
