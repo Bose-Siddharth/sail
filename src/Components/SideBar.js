@@ -21,31 +21,31 @@ const SideBar = forwardRef(({ showNav }, ref) => {
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
               location.pathname === "/"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
+                ? "bg-blue-100 text-blue-500"
+                : "text-gray-400 hover:bg-blue-100 hover:text-blue-500"
             }`}
           >
-            <div className="mr-2">
+            <div className="mr-2 text-blue-600">
               <HomeIcon className="h-5 w-5" />
             </div>
-            <div>
+            <div className="text-blue-600">
               <p>Home</p>
             </div>
           </div>
         </Link>
-        <Link to="/account">
+        <Link to="/machine">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              location.pathname === "/account"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
+              location.pathname === "/machine"
+              ? "bg-blue-100 text-blue-500"
+              : "text-gray-400 hover:bg-blue-100 hover:text-blue-500"
             }`}
           >
-            <div className="mr-2">
+            <div className="mr-2 text-blue-600">
               <UserIcon className="h-5 w-5" />
             </div>
-            <div>
-              <p>Account</p>
+            <div className="text-blue-600">
+              <p>Machine Details</p>
             </div>
           </div>
         </Link>
@@ -53,14 +53,14 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
               location.pathname === "/billing"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
+                ? "bg-blue-100 text-blue-500"
+                : "text-gray-400 hover:bg-blue-100 hover:text-blue-500"
             }`}
           >
-            <div className="mr-2">
+            <div className="mr-2 text-blue-600">
               <CreditCardIcon className="h-5 w-5" />
             </div>
-            <div>
+            <div className="text-blue-600">
               <p>Billing</p>
             </div>
           </div>
