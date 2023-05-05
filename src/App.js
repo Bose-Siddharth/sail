@@ -4,6 +4,7 @@ import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 import Machine from "./Pages/Machine";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient();
 function App() {
@@ -17,6 +18,7 @@ function App() {
           </Routes>
         </Layout>
       </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

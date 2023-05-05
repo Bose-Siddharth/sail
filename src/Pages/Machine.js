@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import {
   Bar,
@@ -17,16 +17,36 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import GaugeChart from "react-gauge-chart";
 // import { tempData } from "../data/tempData";
 // import { humidData } from "../data/humidData";
 
 function Machine() {
-  
-  const {data} = useQuery("tempData", () => axios.get("http://localhost:3004/tempData"));
-  
-  const {data:humidData} = useQuery("humidData", () => axios.get("http://localhost:3004/humidData"));
+  const { data } = useQuery("tempData", () =>
+    axios.get("http://localhost:3004/tempData").then((res) => {
+      setTempData(res.data);
+      setLoading(false);
+    })
+  );
 
+  const { data: humidData } = useQuery("humidData", () =>
+    axios.get("http://localhost:3004/humidData").then((res) => {
+      setHumidData(res.data);
+      setLoading(false);
+    })
+  );
 
+  const [TempData, setTempData] = useState(data);
+  const [HumidData, setHumidData] = useState(humidData);
+
+  // create a loading state
+  const [loading, setLoading] = useState(true);
+
+  //
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="px-4 md:px-16">
@@ -69,7 +89,7 @@ function Machine() {
           <BarChart
             width={500}
             height={300}
-            data={data?data.data:null}
+            data={TempData}
             margin={{
               top: 5,
               right: 30,
@@ -94,7 +114,7 @@ function Machine() {
           <BarChart
             width={500}
             height={300}
-            data={humidData?humidData.data:null}
+            data={HumidData}
             margin={{
               top: 5,
               right: 30,
@@ -111,6 +131,19 @@ function Machine() {
           </BarChart>
         </ResponsiveContainer>
       </div>
+        <div style={{ height: 500, width: 500, marginTop: 55, textAlign: "center" }}>
+            
+          <GaugeChart
+            id="gauge-chart5"
+            nrOfLevels={420}
+            arcsLength={[0.3, 0.5, 0.2]}
+            colors={["#5BE12C", "#F5CD19", "#EA4228"]}
+            arcPadding={0.02}
+            textColor="gray"
+            hideText={true}
+          />
+          <span>37%</span>
+        </div>
     </div>
   );
 }
