@@ -81,7 +81,8 @@ function Machine() {
           </div>
         </div>
       </div>
-      <div className="inline-block w-1/3 h-96 p-3 mr-3 shadow border">
+      <div class="grid grid-cols-3">
+      <div className="inline-block w-6/6 h-96 p-3 mr-3 shadow border">
         <h2 className="text-center my-6 text-gray-700 text-lg underline">
           Temperature
         </h2>
@@ -106,7 +107,7 @@ function Machine() {
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <div className="inline-block w-1/3 h-96 p-3 mr-3 shadow border">
+      <div className="inline-block w-6/6 h-96 p-3 mr-3 shadow border">
         <h2 className="text-center my-6 text-gray-700 text-lg underline">
           Humidity
         </h2>
@@ -131,7 +132,7 @@ function Machine() {
           </BarChart>
         </ResponsiveContainer>
       </div>
-        <div style={{ height: 500, width: 500, marginTop: 55, textAlign: "center" }}>
+      <div style={{ height: 500, width: 500, marginTop: 55, textAlign: "center" }}>
             
           <GaugeChart
             id="gauge-chart5"
@@ -142,8 +143,10 @@ function Machine() {
             textColor="gray"
             hideText={true}
           />
-          <span>37%</span>
+          <span style={{fontSize: 40}}>37%</span>
         </div>
+      </div>
+        
     </div>
   );
 }
