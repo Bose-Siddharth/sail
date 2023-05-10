@@ -108,7 +108,7 @@ function Machine() {
           </h2>
           <VibrationChart />
         </div>
-        <div className="inline-block w-6/6 h-96 p-3 mr-3 shadow border">
+        <div className="inline-block w-6/6  h-auto p-3 mr-3 mb-10 shadow border">
           <h2 className="text-center my-2 text-gray-700 text-lg underline">
             Magnetic Flux
           </h2>

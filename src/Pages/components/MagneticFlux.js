@@ -1,40 +1,49 @@
-import React, { useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useQuery } from "react-query";
-import axios from "axios";
+//npm install react-apexcharts apexcharts
 
+import React, { useState } from "react";
+import Chart from "react-apexcharts";
 
-export default function MagneticFlux(){
+function MagneticFlux() {
+  const [options, setOptions] = useState({
+    chart: {
+      id: "xyz",
+      
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shadeIntensity: 1,
+        inverseColors: false,
+        opacityFrom: 0.5,
+        opacityTo: 0,
+        stops: [0, 90, 100]
+      },
+    },
+    xaxis: {
+      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+    },
+  });
 
-    const { data } = useQuery("fluxData", () =>
-    axios.get("http://localhost:3004/fluxData").then((res) => {
-      setFluxData(res.data);
-    //   setLoading(false);
-    })
+  const [series, setSeries] = useState([
+    {
+      name: "series-1",
+      data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+    },
+    {
+      name: "series-2",
+      data: [10, 50, 35, 20, 15,40, 60, 91, 100],
+    },
+  ]);
+
+  return (
+    <div>
+      <Chart
+        options={options}
+        series={series}
+        type="area"
+      />
+    </div>
   );
-
-  const [FluxData, setFluxData] = useState(data);
-    return (
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            width={500}
-            height={300}
-            data={FluxData}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="FluxX" stroke="#8884d8" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="FluxY" stroke="#82ca9d" />
-          </LineChart>
-        </ResponsiveContainer>
-      );
 }
+
+export default MagneticFlux;
