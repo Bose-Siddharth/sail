@@ -82,6 +82,100 @@
             "name": "3rd May, 2023",
             "Humidity": 18.52619459
         }
+    ],
+    "vibration": [
+        {
+            "name": "24th April, 2023",
+            "Vibration": 18.31654739
+        },
+        {
+            "name": "25th April, 2023",
+            "Vibration": 19.266516
+        },
+        {
+            "name": "26th April, 2023",
+            "Vibration": 12.355739
+        },
+        {
+            "name": "27th April, 2023",
+            "Vibration": 14.5884739
+        },
+        {
+            "name": "28th April, 2023",
+            "Vibration": 17.31654739
+        },
+        {
+            "name": "29th April, 2023",
+            "Vibration": 14.622352
+        },
+        {
+            "name": "30th April, 2023",
+            "Vibration": 12.0205858
+        },
+        {
+            "name": "1st May, 2023",
+            "Vibration": 15.959299
+        },
+        {
+            "name": "2nd May, 2023",
+            "Vibration": 17.31654739
+        },
+        {
+            "name": "3rd May, 2023",
+            "Vibration": 18.52619459
+        }
+    ],
+    "fluxData": [
+        {
+            "name": "24th April, 2023",
+            "FluxX": 12.31654739,
+            "FluxY": 13.31654739
+        },
+        {
+            "name": "25th April, 2023",
+            "FluxX": 19.266516,
+            "FluxY": 17.266516
+        },
+        {
+            "name": "26th April, 2023",
+            "FluxX": 12.355739,
+            "FluxY": 15.355739
+        },
+        {
+            "name": "27th April, 2023",
+            "FluxX": 14.5884739,
+            "FluxY": 16.5884739
+        },
+        {
+            "name": "28th April, 2023",
+            "FluxX": 17.31654739,
+            "FluxY": 18.31654739
+        },
+        {
+            "name": "29th April, 2023",
+            "FluxX": 14.622352,
+            "FluxY": 15.622352
+        },
+        {
+            "name": "30th April, 2023",
+            "FluxX": 12.0205858,
+            "FluxY": 13.0205858
+        },
+        {
+            "name": "1st May, 2023",
+            "FluxX": 15.959299,
+            "FluxY": 16.959299
+        },
+        {
+            "name": "2nd May, 2023",
+            "FluxX": 17.31654739,
+            "FluxY": 18.31654739
+        },
+        {
+            "name": "3rd May, 2023",
+            "FluxX": 18.52619459,
+            "FluxY": 19.52619459
+        }
     ]
 }
     
