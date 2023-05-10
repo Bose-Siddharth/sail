@@ -51,7 +51,6 @@ function Machine() {
   // if (loading) {
   //   return <h1>Loading...</h1>;
   // }
-
   return (
     <div className="px-4 md:px-16">
       <p className="text-gray-700 text-3xl mb-16 font-bold">Machine</p>
