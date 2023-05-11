@@ -1,5 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactSpeedometer from "react-d3-speedometer";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { tempData } from './../../data/tempData';
 
 const styles = {
   dial: {
@@ -9,10 +12,6 @@ const styles = {
     color: "#000",
     border: "0.5px solid #fff",
     padding: "2px"
-  },
-  title: {
-    fontSize: "1em",
-    color: "#000"
   }
 };
 
@@ -20,14 +19,26 @@ const styles = {
 // https://www.pluralsight.com/guides/re-render-react-component-on-window-resize
 
 const Speedometer = ({ id, value, title }) => {
+  const setFlexData = () => {
+    axios.get("http://192.168.90.71:3001/#").then((res) => {
+      console.log(res.data.data[5].A.Temperature);
+      setTempData(res.data.data[5].A.Temperature);
+      // setLoading(false);
+    })
+  };
+
+  const { data } = useQuery("data", setFlexData, {cacheTime: 2000});
+  const [TempData, setTempData] = useState(data);
+  
+ 
   return (
-    <div style={styles.dial}>
+    <div style={styles.dial} className="">
       <ReactSpeedometer
-        maxValue={120}
-        minValue={-100}
+        maxValue={35}
+        minValue={33}
         height={490}
         width={600}
-        value={value}
+        value={TempData}
         needleTransition="easeQuadIn"
         needleTransitionDuration={1000}
         needleColor="red"
@@ -35,7 +46,6 @@ const Speedometer = ({ id, value, title }) => {
         segments={10}
         endColor="blue"
       />
-      <div style={styles.title}>{title}</div>
     </div>
   );
 };

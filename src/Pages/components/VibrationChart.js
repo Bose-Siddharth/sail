@@ -13,21 +13,22 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 export default function VibrationChart() {
-  const { data } = useQuery("vibration", () =>
-    axios.get("http://localhost:3004/vibration").then((res) => {
-      setTempData(res.data);
-    //   setLoading(false);
-    })
-  );
+  // const fetchVisData = () => {
+  //   axios.get("http://192.168.90.71:3001/#").then((res) => {
+  //     setTempData(res.data.data);
+  //     // setLoading(false);
+  //   })
+  // };
 
-  const [TempData, setTempData] = useState(data);
-  console.log(TempData);
+  // const { data } = useQuery("data", fetchVisData, {cacheTime: 4000});
+
+  // const [TempData, setTempData] = useState(data);
+  // console.log(TempData);
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
-        width={500}
-        height={300}
-        data={TempData}
+        // data={}
+
         margin={{
           top: 20,
           right: 20,
@@ -41,8 +42,8 @@ export default function VibrationChart() {
         <Tooltip />
         <Legend />
         <Line
-          type="monotone"
-          dataKey="Vibration"
+          type="linear"
+          dataKey="Vibration X"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />

@@ -123,6 +123,36 @@
         {
             "name": "3rd May, 2023",
             "Vibration": 18.52619459
+        },
+        {
+            "name": "4th May, 2023",
+            "Vibration": 22.52619459
+        },
+        {
+            "name": "5th May, 2023",
+            "Vibration": 5.52619459
+        },
+        {
+            "name": "6th May, 2023",
+            "Vibration": 1.52619459
+        },{
+            "name": "7th May, 2023",
+            "Vibration": 18.52619459
+        },{
+            "name": "8th May, 2023",
+            "Vibration": 18.52619459
+        },{
+            "name":"1st June, 2023",
+            "Vibration": 11.52619459
+        },{
+            "name":"2nd June, 2023",
+            "Vibration": 12.52619459
+        },{
+            "name":"3rd June, 2023",
+            "Vibration": 13.52619459
+        },{
+            "name":"4th June, 2023",
+            "Vibration": 14.52619459
         }
     ],
     "fluxData": [

@@ -6,7 +6,7 @@ import {
   faEarListen,
 } from "@fortawesome/free-solid-svg-icons";
 // import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 // import { useQuery } from "react-query";
 // import {
 //   Bar,
@@ -26,6 +26,9 @@ import MagneticFlux from './components/MagneticFlux';
 //change
 
 function Machine() {
+
+  // 
+
   // const { data } = useQuery("tempData", () =>
   //   axios.get("http://localhost:3004/tempData").then((res) => {
   //     setTempData(res.data);
@@ -97,8 +100,8 @@ function Machine() {
           <h2 className="text-center text-gray-700 text-lg underline">
             Temperature
           </h2>
-          <div className="lg:mx-8">
-          <TempGauge value={22} />
+          <div className="mx-5">
+          <TempGauge value={22}/>
           </div>
         </div>
         <div className="inline-block w-6/6 h-96 p-3 mr-3 shadow border">

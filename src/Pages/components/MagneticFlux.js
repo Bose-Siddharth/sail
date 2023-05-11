@@ -3,7 +3,14 @@
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
 
+
 function MagneticFlux() {
+
+
+  
+
+  // var newData = 
+
   const [options, setOptions] = useState({
     chart: {
       id: "xyz",
@@ -26,12 +33,16 @@ function MagneticFlux() {
 
   const [series, setSeries] = useState([
     {
-      name: "series-1",
+      name: "X-axis",
       data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
     },
     {
-      name: "series-2",
+      name: "Y-axis",
       data: [10, 50, 35, 20, 15,40, 60, 91, 100],
+    },
+    {
+      name: "Z-axis",
+      data: [13, 23, 35, 20, 15,50, 60, 91, 100],
     },
   ]);
 
