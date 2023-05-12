@@ -47,38 +47,38 @@ function Machine() {
       <p className="text-gray-700 text-3xl mb-16 font-bold">Machine</p>
 
       <div className="grid lg:grid-cols-4 gap-4 mb-16">
-        <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow rounded">
+        <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow">
           <div className="text-gray-600 text-2xl float-left inline-block align-middle p-5">
             Temperature
           </div>
-          <div className="text-white float-right border p-3 rounded-full bg-blue-400 inline-block align-middle p-5">
+          <div className="text-white float-right border p-3 rounded-full bg-blue-400 inline-block align-middle">
             <FontAwesomeIcon
               style={{ fontSize: "2rem" }}
               icon={faTemperature0}
             />
           </div>
         </div>
-        <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow rounded">
+        <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow">
           <div className="text-gray-600 text-2xl float-left inline-block align-middle p-5">
             Humidity
           </div>
-          <div className="text-white float-right border p-3 rounded-full bg-blue-400 inline-block align-middle p-5">
+          <div className="text-white float-right border rounded-full bg-blue-400 inline-block align-middle p-5">
             <FontAwesomeIcon style={{ fontSize: "2rem" }} icon={faDroplet} />
           </div>
         </div>
-        <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow rounded">
+        <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow">
           <div className="text-gray-600 text-2xl float-left inline-block align-middle p-5">
             Heat Flux
           </div>
-          <div className="text-white float-right border p-3 rounded-full bg-blue-400 inline-block align-middle p-5">
+          <div className="text-white float-right border rounded-full bg-blue-400 inline-block align-middle p-5">
             <FontAwesomeIcon style={{ fontSize: "2rem" }} icon={faFireAlt} />
           </div>
         </div>
-        <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow rounded">
+        <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow">
           <div className="text-gray-600 text-2xl float-left inline-block align-middle p-5">
             Ultrasound
           </div>
-          <div className="text-white float-right border p-3 rounded-full bg-blue-400 inline-block align-middle p-5">
+          <div className="text-white float-right border rounded-full bg-blue-400 inline-block align-middle p-5">
             <FontAwesomeIcon style={{ fontSize: "2rem" }} icon={faEarListen} />
           </div>
         </div>
