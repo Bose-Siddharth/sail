@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ReactSpeedometer from "react-d3-speedometer";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { tempData } from './../../data/tempData';
+// import { tempData } from './../../data/tempData';
 
 const styles = {
   dial: {
@@ -21,21 +21,20 @@ const styles = {
 const Speedometer = ({ id, value, title }) => {
   const setFlexData = () => {
     axios.get("http://192.168.90.71:3001/#").then((res) => {
-      console.log(res.data.data[5].A.Temperature);
-      setTempData(res.data.data[5].A.Temperature);
+      setTempData(res.data.data[4].A.Temperature);
       // setLoading(false);
     })
   };
 
-  const { data } = useQuery("data", setFlexData, {cacheTime: 2000});
+  const { data } = useQuery("data", setFlexData, {refetchInterval: 2000});
   const [TempData, setTempData] = useState(data);
   
  
   return (
-    <div style={styles.dial} className="">
+    <div style={styles.dial} >
       <ReactSpeedometer
-        maxValue={35}
-        minValue={33}
+        maxValue={50}
+        minValue={20}
         height={490}
         width={600}
         value={TempData}
