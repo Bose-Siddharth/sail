@@ -3,8 +3,41 @@
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
 
-function MagneticFlux() {
-  // var newData =
+function MagneticFlux({sensorData}) {
+
+
+  const XAxis = [];
+  const YAxis = [];
+  const ZAxis = [];
+
+  for (let index = 0; index < sensorData.length ; index++) {
+    XAxis.push(sensorData[index].A.Vibration_X)
+    YAxis.push(sensorData[index].A.Vibration_Y)
+    ZAxis.push(sensorData[index].A.Vibration_Z)
+  }
+
+  console.log("vibration rendered")
+  
+  const series =[
+    [
+      {
+        name: "X-axis",
+        data: XAxis,
+      },
+    ],
+    [
+      {
+        name: "Y-axis",
+        data: YAxis,
+      },
+    ],
+    [
+      {
+        name: "Z-axis",
+        data: ZAxis,
+      },
+    ],
+  ]
 
   const [options, setOptions] = useState([
     {
@@ -46,8 +79,6 @@ function MagneticFlux() {
         ],
       },
       yaxis: {
-        min: 0,
-        max: 40,
         tickAmount: 2,
       },
     },
@@ -90,8 +121,6 @@ function MagneticFlux() {
         ],
       },
       yaxis: {
-        min: 0,
-        max: 40,
         tickAmount: 2,
       },
     },
@@ -134,32 +163,9 @@ function MagneticFlux() {
         ],
       },
       yaxis: {
-        min: 0,
-        max: 40,
         tickAmount: 2,
       },
     },
-  ]);
-
-  const [series, setSeries] = useState([
-    [
-      {
-        name: "X-axis",
-        data: [0, 30, 0, 25, 22, 0, 15, 4, 30],
-      },
-    ],
-    [
-      {
-        name: "Y-axis",
-        data: [0, 10, 0, 15, 26, 0, 40, 5, 35],
-      },
-    ],
-    [
-      {
-        name: "Z-axis",
-        data: [0, 20, 0, 15, 29, 0, 35, 4, 38],
-      },
-    ],
   ]);
 
   return (

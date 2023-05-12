@@ -1,20 +1,14 @@
 //npm install react-apexcharts apexcharts
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 
-function MagneticFlux() {
-
-
-  
-
-  // var newData = 
+function MagneticFlux({sensorData}) {
 
   const [options, setOptions] = useState({
     chart: {
       id: "xyz",
-      
     },
     fill: {
       type: 'gradient',
@@ -23,28 +17,38 @@ function MagneticFlux() {
         inverseColors: false,
         opacityFrom: 0.5,
         opacityTo: 0,
-        stops: [0, 90, 100]
       },
     },
     xaxis: {
-      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+      categories: ["10:00", "10:01", "10:02", "10:03", "10:04", "10:05", "10:06", "10:07", "10:08"],
     },
   });
 
-  const [series, setSeries] = useState([
+  
+  const XAxis = [];
+  const YAxis = [];
+  const ZAxis = [];
+
+  for (let index = 0; index < sensorData.length ; index++) {
+    XAxis.push(sensorData[index].A.EMF_X)
+    YAxis.push(sensorData[index].A.EMF_Y)
+    ZAxis.push(sensorData[index].A.EMF_Z)
+  }
+
+  const series = [
     {
       name: "X-axis",
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+      data: XAxis ,
     },
     {
       name: "Y-axis",
-      data: [10, 50, 35, 20, 15,40, 60, 91, 100],
+      data: YAxis ,
     },
     {
       name: "Z-axis",
-      data: [13, 23, 35, 20, 15,50, 60, 91, 100],
+      data: ZAxis,
     },
-  ]);
+  ]
 
   return (
     <div>

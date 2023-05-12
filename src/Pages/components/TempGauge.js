@@ -1,8 +1,5 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ReactSpeedometer from "react-d3-speedometer";
-import { useQuery } from "react-query";
-import axios from "axios";
-// import { tempData } from './../../data/tempData';
 
 const styles = {
   dial: {
@@ -15,36 +12,23 @@ const styles = {
   }
 };
 
-// use media queries to make the speedometer responsive
-// https://www.pluralsight.com/guides/re-render-react-component-on-window-resize
-
-const Speedometer = ({ id, value, title }) => {
-
-  // const setFlexData = () => {
-  //   axios.get("http://192.168.90.71:3001/#").then((res) => {
-  //     setTempData(res.data.data[4].A.Temperature);
-  //     // setLoading(false);
-  //   })
-  // };
-
-  // const { data } = useQuery("data", setFlexData, {refetchInterval: 2000});
-  // const [TempData, setTempData] = useState(data);
-  
+const Speedometer = ({ id, sensorData, title }) => {
  
+  console.log("rendered");
   return (
     <div style={styles.dial} >
       <ReactSpeedometer
-        maxValue={50}
-        minValue={20}
+        maxValue={70}
+        minValue={0}
         height={490}
         width={600}
-        value={value}
+        value={sensorData}
         needleTransition="easeQuadIn"
         needleTransitionDuration={1000}
-        needleColor="red"
+        needleColor= 'red'
         startColor="green"
         segments={10}
-        endColor="blue"
+        endColor="red"
       />
     </div>
   );

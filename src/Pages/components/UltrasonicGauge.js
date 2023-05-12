@@ -1,8 +1,5 @@
 import React, {useState} from "react";
 import ReactSpeedometer from "react-d3-speedometer";
-import { useQuery } from "react-query";
-import axios from "axios";
-// import { tempData } from './../../data/tempData';
 
 const styles = {
   dial: {
@@ -15,10 +12,7 @@ const styles = {
   }
 };
 
-// use media queries to make the speedometer responsive
-// https://www.pluralsight.com/guides/re-render-react-component-on-window-resize
-
-const UltrasonicGauge = ({ id, value, title }) => {
+const UltrasonicGauge = ({ id, sensorData, title }) => {
 
   return (
     <div style={styles.dial} >
@@ -27,7 +21,7 @@ const UltrasonicGauge = ({ id, value, title }) => {
         minValue={0}
         height={490}
         width={600}
-        value={value}
+        value={sensorData}
         needleTransition="easeQuadIn"
         needleTransitionDuration={1000}
         needleColor="red"
