@@ -16,8 +16,6 @@ function MagneticFlux({sensorData}) {
     ZAxis.push(sensorData[index].A.Vibration_Z)
   }
 
-  console.log("vibration rendered")
-  
   const series =[
     [
       {

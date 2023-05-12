@@ -14,7 +14,6 @@ const styles = {
 
 const Speedometer = ({ id, sensorData, title }) => {
  
-  console.log("rendered");
   return (
     <div style={styles.dial} >
       <ReactSpeedometer
