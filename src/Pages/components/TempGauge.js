@@ -19,15 +19,16 @@ const styles = {
 // https://www.pluralsight.com/guides/re-render-react-component-on-window-resize
 
 const Speedometer = ({ id, value, title }) => {
-  const setFlexData = () => {
-    axios.get("http://192.168.90.71:3001/#").then((res) => {
-      setTempData(res.data.data[4].A.Temperature);
-      // setLoading(false);
-    })
-  };
 
-  const { data } = useQuery("data", setFlexData, {refetchInterval: 2000});
-  const [TempData, setTempData] = useState(data);
+  // const setFlexData = () => {
+  //   axios.get("http://192.168.90.71:3001/#").then((res) => {
+  //     setTempData(res.data.data[4].A.Temperature);
+  //     // setLoading(false);
+  //   })
+  // };
+
+  // const { data } = useQuery("data", setFlexData, {refetchInterval: 2000});
+  // const [TempData, setTempData] = useState(data);
   
  
   return (
@@ -37,7 +38,7 @@ const Speedometer = ({ id, value, title }) => {
         minValue={20}
         height={490}
         width={600}
-        value={TempData}
+        value={value}
         needleTransition="easeQuadIn"
         needleTransitionDuration={1000}
         needleColor="red"

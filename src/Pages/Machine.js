@@ -6,54 +6,46 @@ import {
   faEarListen,
 } from "@fortawesome/free-solid-svg-icons";
 // import axios from "axios";
-import React, { useEffect } from "react";
-// import { useQuery } from "react-query";
-// import {
-//   Bar,
-//   BarChart,
-//   CartesianGrid,
-//   Legend,
-//   ResponsiveContainer,
-//   Tooltip,
-//   XAxis,
-//   YAxis,
-// } from "recharts";
-// import ApexCharts from 'apexcharts'
+import React, { useState } from "react";
+import { useQuery } from "react-query";
+import axios from "axios";
 import VibrationChart from "./components/VibrationChart";
-// import ReactSpeedometer from "react-d3-speedometer";
 import TempGauge from "./components/TempGauge";
-import MagneticFlux from './components/MagneticFlux';
+import MagneticFlux from "./components/MagneticFlux";
+import UltrasonicGauge from "./components/UltrasonicGauge";
 //change
 
 function Machine() {
+  const [sensorData, setSensorData] = useState(null);
 
-  // 
+  const setFlexData = () => {
+    axios.get("http://192.168.90.71:3001/#").then((res) => {
+      if (res.data) {
+        setSensorData(res.data);
+      }
+      console.log(sensorData);
+      // setLoading(false);
+    });
+  };
 
-  // const { data } = useQuery("tempData", () =>
-  //   axios.get("http://localhost:3004/tempData").then((res) => {
-  //     setTempData(res.data);
-  //     setLoading(false);
-  //   })
-  // );
+  useQuery("data", setFlexData, { refetchInterval: 2000 });
 
-  // const { data: humidData } = useQuery("humidData", () =>
-  //   axios.get("http://localhost:3004/humidData").then((res) => {
-  //     setHumidData(res.data);
-  //     setLoading(false);
-  //   })
-  // );
+  if (sensorData == null) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>Loading...</h1>;
+      </div>
+    );
+  }
 
-  // const [TempData, setTempData] = useState(data);
-  // const [HumidData, setHumidData] = useState(humidData);
-
-  // create a loading state
-  // const [loading, setLoading] = useState(false);
-
-  // //
-
-  // if (loading) {
-  //   return <h1>Loading...</h1>;
-  // }
   return (
     <div className="px-4 md:px-16">
       <p className="text-gray-700 text-3xl mb-16 font-bold">Machine</p>
@@ -95,28 +87,34 @@ function Machine() {
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-2">
-        <div className="inline-block w-6/6 h-96 p-3 mr-3 shadow border mb-10">
-          <h2 className="text-center text-gray-700 text-lg underline">
-            Temperature
-          </h2>
-          <div className="mx-5">
-          <TempGauge value={22}/>
+      <section class="flex flex-col justify-center">
+        <div class="grid grid-cols-2 gap-10">
+          <div className="inline-block w-6/6 h-96 p-3 shadow border ">
+            <h2 className="text-center text-gray-700 text-lg mb-3">
+              Temperature
+            </h2>
+            <TempGauge value={sensorData.data[4].A.Temperature} />
+          </div>
+          <div className="inline-block w-6/6 h-auto p-5 shadow border">
+            <h2 className="text-center text-gray-700 text-lg mb-3">
+              Vibration
+            </h2>
+            <VibrationChart value={sensorData} />
+          </div>
+          <div className="inline-block w-6/6  h-auto p-3  shadow border -mt-36">
+            <h2 className="text-center text-gray-700 text-lg mb-3">
+              Magnetic Flux
+            </h2>
+            <MagneticFlux value={sensorData} />
+          </div>
+          <div className="inline-block w-6/6  h-96 p-3 shadow border -mt-4">
+            <h2 className="text-center text-gray-700 text-lg mb-3">
+              Ultrasonic
+            </h2>
+            <UltrasonicGauge value={sensorData.data[4].A.Ultrasonic} />
           </div>
         </div>
-        <div className="inline-block w-6/6 h-96 p-3 mr-3 shadow border">
-          <h2 className="text-center text-gray-700 text-lg underline">
-            Vibration
-          </h2>
-          <VibrationChart />
-        </div>
-        <div className="inline-block w-6/6  h-auto p-3 mr-3 mb-10 shadow border">
-          <h2 className="text-center my-2 text-gray-700 text-lg underline">
-            Magnetic Flux
-          </h2>
-          <MagneticFlux/>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

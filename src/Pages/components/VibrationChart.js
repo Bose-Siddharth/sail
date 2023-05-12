@@ -1,54 +1,174 @@
-import React, {useState} from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-import { useQuery } from "react-query";
-import axios from "axios";
+//npm install react-apexcharts apexcharts
 
-export default function VibrationChart() {
-  // const fetchVisData = () => {
-  //   axios.get("http://192.168.90.71:3001/#").then((res) => {
-  //     setTempData(res.data.data);
-  //     // setLoading(false);
-  //   })
-  // };
+import React, { useState } from "react";
+import Chart from "react-apexcharts";
 
-  // const { data } = useQuery("data", fetchVisData, {cacheTime: 4000});
+function MagneticFlux() {
+  // var newData =
 
-  // const [TempData, setTempData] = useState(data);
-  // console.log(TempData);
+  const [options, setOptions] = useState([
+    {
+      chart: {
+        id: "xyz",
+        background: "#F6F8FA",
+        toolbar: {
+          show: false, // Disable toolbar
+        },
+      },
+      title: {
+        text: "X-Axis", // Name of the chart
+        align: "left", // Align the title to the right
+        floating: false, // Allow the title to float above the chart
+      },
+      colors: ["#7BD39A"],
+      dataLabels: {
+        enabled: false,
+      },
+      fill: {
+        opacity: 1,
+        type: "solid",
+      },
+      stroke: {
+        width: 0,
+        curve: "smooth",
+      },
+      xaxis: {
+        categories: [
+          "10:00",
+          "10:01",
+          "10:02",
+          "10:03",
+          "10:04",
+          "10:05",
+          "10:06",
+          "10:07",
+          "10:08",
+        ],
+      },
+      yaxis: {
+        min: 0,
+        max: 40,
+        tickAmount: 2,
+      },
+    },
+    {
+      chart: {
+        id: "xyz",
+        background: "#F6F8FA",
+        toolbar: {
+          show: false, // Disable toolbar
+        },
+      },
+      title: {
+        text: "Y-Axis", // Name of the chart
+        align: "left", // Align the title to the right
+        floating: false, // Allow the title to float above the chart
+      },
+      colors: ["#7BD39A"],
+      dataLabels: {
+        enabled: false,
+      },
+      fill: {
+        opacity: 1,
+        type: "solid",
+      },
+      stroke: {
+        width: 0,
+        curve: "smooth",
+      },
+      xaxis: {
+        categories: [
+          "10:00",
+          "10:01",
+          "10:02",
+          "10:03",
+          "10:04",
+          "10:05",
+          "10:06",
+          "10:07",
+          "10:08",
+        ],
+      },
+      yaxis: {
+        min: 0,
+        max: 40,
+        tickAmount: 2,
+      },
+    },
+    {
+      chart: {
+        id: "xyz",
+        background: "#F6F8FA",
+        toolbar: {
+          show: false, // Disable toolbar
+        },
+      },
+      title: {
+        text: "Z-Axis", // Name of the chart
+        align: "left", // Align the title to the right
+        floating: false, // Allow the title to float above the chart
+      },
+      colors: ["#7BD39A"],
+      dataLabels: {
+        enabled: false,
+      },
+      fill: {
+        opacity: 1,
+        type: "solid",
+      },
+      stroke: {
+        width: 0,
+        curve: "smooth",
+      },
+      xaxis: {
+        categories: [
+          "10:00",
+          "10:01",
+          "10:02",
+          "10:03",
+          "10:04",
+          "10:05",
+          "10:06",
+          "10:07",
+          "10:08",
+        ],
+      },
+      yaxis: {
+        min: 0,
+        max: 40,
+        tickAmount: 2,
+      },
+    },
+  ]);
+
+  const [series, setSeries] = useState([
+    [
+      {
+        name: "X-axis",
+        data: [0, 30, 0, 25, 22, 0, 15, 4, 30],
+      },
+    ],
+    [
+      {
+        name: "Y-axis",
+        data: [0, 10, 0, 15, 26, 0, 40, 5, 35],
+      },
+    ],
+    [
+      {
+        name: "Z-axis",
+        data: [0, 20, 0, 15, 29, 0, 35, 4, 38],
+      },
+    ],
+  ]);
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart
-        // data={}
-
-        margin={{
-          top: 20,
-          right: 20,
-          bottom: 20,
-          left: 20,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="linear"
-          dataKey="Vibration X"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
-        />
-        {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
-      </LineChart>
-    </ResponsiveContainer>
+    <div>
+      <Chart options={options[0]} series={series[0]} height={130} type="area" />
+      <Chart options={options[1]} series={series[1]} height={130} type="area" />
+      <Chart options={options[2]} series={series[2]} height={130} type="area" />
+    </div>
   );
 }
+
+export default MagneticFlux;
