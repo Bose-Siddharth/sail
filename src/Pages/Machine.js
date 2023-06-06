@@ -12,6 +12,7 @@ import VibrationChart from "./components/VibrationChart";
 import TempGauge from "./components/TempGauge";
 import MagneticFlux from "./components/MagneticFlux";
 import UltrasonicGauge from "./components/UltrasonicGauge";
+import Loading from "./components/Loading";
 
 function Machine() {
   const [sensorData, setSensorData] = useState(null);
@@ -30,14 +31,14 @@ function Machine() {
     return (
       <div
         style={{
-          height: "100vh",
-          width: "100%",
+          height: "80vh",
+          width: "80vw",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <h1>Loading...</h1>;
+        <Loading/>
       </div>
     );
   }
