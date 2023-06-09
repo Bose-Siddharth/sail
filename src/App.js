@@ -3,8 +3,11 @@ import "./App.css";
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 import Machine from "./Pages/Machine";
+import MonitorData from "./Pages/components/MonitorData";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+
+
 
 const queryClient = new QueryClient();
 function App() {
@@ -14,6 +17,7 @@ function App() {
         <Layout>
           <Routes>
             <Route exact path="/" element={<Home />} />
+            <Route exact path="/monitor" element={<MonitorData />} />
             <Route exact path="/machine" element={<Machine />} />
           </Routes>
         </Layout>

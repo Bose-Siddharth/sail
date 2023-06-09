@@ -13,7 +13,7 @@ import {Link} from "react-router-dom";
 export default function TopBar({ showNav, setShowNav }) {
   return (
     <div
-      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${
+      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] border-t-4 border-t-teal-500 bg-white ${
         showNav ? "pl-56" : ""
       }`}
     >
