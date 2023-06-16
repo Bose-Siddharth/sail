@@ -13,7 +13,7 @@ import {Link} from "react-router-dom";
 export default function TopBar({ showNav, setShowNav }) {
   return (
     <div
-      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] border-t-4 border-t-teal-500 bg-white ${
+      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] border-t-4 border-t-teal-500 bg-white z-40 ${
         showNav ? "pl-56" : ""
       }`}
     >
@@ -108,7 +108,7 @@ export default function TopBar({ showNav, setShowNav }) {
             <Menu.Button className="inline-flex w-full justify-center items-center">
               <picture>
                 <img
-                  src="/man-smiling.jpg"
+                  src="./assets/man-smiling.jpg"
                   className="rounded-full h-8 md:mr-4 border-2 border-white shadow-sm"
                   alt="profile"
                 />

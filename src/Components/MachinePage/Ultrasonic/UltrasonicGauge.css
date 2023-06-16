@@ -1,0 +1,171 @@
+.wrapper {
+    display: table;
+    /* margin: 0 auto; */
+    padding: 35px 40px 15px;
+    border-radius: 6px;
+  }
+  
+  .wrapper-header {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: rgba(7, 7, 7, 0.74);
+    margin-bottom: 0px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .meter{
+    width:125%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: -16px;
+  }
+  
+  .a{
+    transform: translate(0px, -17px) ;
+  }
+  .b{
+    transform: translate(-25px, -80px) ;
+  }
+  .c{
+    transform: translate(-16px, -118px) ;
+  }
+  .d{
+    
+    transform: translate(8px, -119px) ;
+  }
+  .e{
+    transform: translate(25px, -79px) ;
+  }
+  .f{
+    transform: translate(-5px, -17px) ;
+  }
+  .gauge {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #e7e7e7;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.09),
+      0 0 35px 5px rgba(255, 255, 255, 0.29);
+    width: 200px;
+    height: 100px;
+    border-radius: 100px 100px 0 0;
+    position: relative;
+    overflow: hidden;
+    /* safari fix */
+    -webkit-transform-style: flat;
+    -webkit-transform: translateZ(0px);
+  }
+  
+  .gauge.min-scaled {
+    transform: scale(0.5);
+  }
+  
+  .gauge-center {
+    color: #fff;
+    width: 60%;
+    height: 60%;
+    background: white;
+    border-radius: 100px 100px 0 0;
+    position: absolute;
+    box-shadow: 0 -13px 15px -10px rgba(0, 0, 0, 0.28);
+    right: 21%;
+    bottom: 0;
+    color: #fff;
+    z-index: 1;
+  }
+  .gauge-points {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    transform: translateY(-50%);
+  }
+  
+  .gauge-point {
+    width: 4px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+  
+  .gauge-point.active {
+    background-color: #ff0000; /* Change the color for active gauge points */
+  }
+  
+  .needle {
+    width: 78px;
+    height: 7px;
+    background: #15222e;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 5px;
+    position: absolute;
+    bottom: 4px;
+    left: 20px;
+    transform-origin: 100% 4px;
+    animation: speed 5s infinite;
+    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.38);
+    z-index: 2;
+    /* Add the following line to rotate the needle based on user input */
+    transition: all 0.5s ease-in;
+    transform: rotate(0deg);
+  
+  }
+  
+  .slice-colors .st {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 0;
+    border-bottom: 80px solid #000;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+  }
+  
+  .slice-colors .st.slice-item:nth-child(1) {
+    border-bottom-color: #1eaa59;
+    left: -2px;
+    width: 80px;
+  }
+  
+  .slice-colors .st.slice-item:nth-child(2) {
+    border-bottom-color: #9baa1e;
+    transform: rotate(135deg);
+    transform-origin: right;
+    top: 12px;
+    left: -65px;
+    width: 80px;
+  }
+  
+  .slice-colors .st.slice-item:nth-child(3) {
+    border-bottom-color: #f1c40f;
+    transform: rotate(179deg);
+    transform-origin: right;
+    top: -20px;
+    left: -62px;
+    border-bottom-width: 90px;
+    border-left-width: 45px;
+    border-right-width: 60px;
+    width: 100px;
+  }
+  
+  .slice-colors .st.slice-item:nth-child(4) {
+    border-bottom-color: #e67e22;
+    transform: rotate(219deg);
+    transform-origin: right;
+    top: -23px;
+    left: 43px;
+    border-bottom-width: 90px;
+    width: 70px;
+  }
+  
+  .slice-colors .st.slice-item:nth-child(5) {
+    border-bottom-color: #e84c3d;
+    transform: rotate(240deg);
+    transform-origin: right;
+    right: 52px;
+    width: 80px;
+  }
+  
+  
