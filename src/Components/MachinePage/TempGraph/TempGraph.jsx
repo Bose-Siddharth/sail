@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
+import "./TempGraph.css"
 
 function TempGraph({ sensorData }) {
   const [options] = useState({
