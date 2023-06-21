@@ -12,11 +12,12 @@ body {
   background-image: url("../../../public/assets/bgimage.jpeg");
   justify-content: center !important;
   align-items: center !important;
+  background-position: center;
 }
 
 .signup-form {
-  width: 35%;
   height: 75%;
+  width: 30%;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(6px);
   padding: 10px 30px 10px 30px;
@@ -33,8 +34,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 124%;
-  margin-left: -12%;
+  width: 100%;
+  /* margin-left: -12%; */
   }
 .form-part-3{
   display: flex;

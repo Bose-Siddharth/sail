@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import popMessage from "../../Utils/PopUp";
 import "./login.css";
 
 const LoginPage = () => {
@@ -27,11 +28,10 @@ const LoginPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === "success") {
           navigate("/");
         } else {
-          alert("Invalid Credentials");
+          popMessage("Try Again", "error" ,data.message); // popMessage(title, icon, massage)
         }
       })
       .catch((err) => {
@@ -48,11 +48,18 @@ const LoginPage = () => {
 
   return (
     <div className="login-container">
-      <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "40%",
+        }}
+      >
         <img
           src="./assets/iemathree.png"
           alt="logo"
-          className="h-auto mt-6 mb-14 mr-52"
+          className="h-auto"
         />
       </div>
       <div className="login-form">
@@ -78,11 +85,18 @@ const LoginPage = () => {
             <br />
             or
           </div>
-          <a href="/signup"> Sign Up</a>
+          <a href="/sign-up"> Sign Up</a>
         </div>
       </div>
-      <div>
-        <img src="./assets/sailtwoo.png" alt="" className="h-auto mt-12 mb-14 ml-52" />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "40%",
+        }}
+      >
+        <img src="./assets/sailtwoo.png" alt="" className="h-auto" />
       </div>
     </div>
   );

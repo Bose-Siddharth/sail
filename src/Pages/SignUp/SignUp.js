@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"; // Import Link component for internal navigation
 import "./signup.css";
+import popMessage from "../../Utils/PopUp";
 
 const SignUpPage = () => {
   const [firstName, setFirstName] = useState("");
@@ -42,17 +43,25 @@ const SignUpPage = () => {
       .then((response) => response.json())
       .then((json) => console.log(json))
       .then(() => {
-        navigate("/login");
+        navigate("/sign-in");
       })
       .catch((error) => {
-        console.error("Error:", error);
+        popMessage("try agian","error".error.message);
       });
+
   };
 
   return (
     <div className="signup-container">
-      <div>
-        <img src="./assets/iemathree.png" alt="logo" className=" mr-36" />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "35%",
+        }}
+      >
+        <img src="./assets/iemathree.png" alt="logo"/>
       </div>
       <div className="signup-form">
         <h2 className="mt-9 mb-8">Create Account</h2>
@@ -134,14 +143,21 @@ const SignUpPage = () => {
         <div className="text-white mb-2 btn-center mt-7">
           <p>
             Already have an account?{" "}
-            <Link to="/login" className="text-blue-700">
+            <Link to="/sign-in" className="text-blue-700">
               Login Instead!
             </Link>
           </p>
         </div>
       </div>
-      <div>
-        <img src="./assets/sailtwoo.png" alt="" className=" ml-36" />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "35%",
+        }}
+      >
+        <img src="./assets/sailtwoo.png" alt="" />
       </div>
     </div>
   );
