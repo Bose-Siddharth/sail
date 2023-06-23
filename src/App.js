@@ -19,12 +19,12 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route element={<PrivateRoutes />}>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/home" element={<Home />} />
               <Route exact path="/monitor" element={<MonitorData />} />
               <Route exact path="/machine" element={<Machine />} />
               <Route exact path="/devices" element={<Devices />} />
             </Route>
-            <Route exact path="/sign-in" element={<LoginPage />} />
+            <Route exact  path="/" element={<LoginPage />} />
             <Route exact path="/sign-up" element={<SignUpPage />} />
           </Routes>
       </BrowserRouter>

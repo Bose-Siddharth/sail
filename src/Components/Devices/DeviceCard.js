@@ -35,7 +35,7 @@ function DeviceCard(props) {
           <div className="border-4 border-white rounded-full shadow-md relative inline-block">
             <img
               className=" object-cover rounded-full w-24 h-24"
-              src="https://unsplash.com/photos/hsPFuudRg5I/download?force=true"
+              src="https://tse4.mm.bing.net/th?id=OIP.OhGBY1_AEMABRb1ypZQT9AHaFj&pid=Api&P=0&h=180"
               alt=""
             />
             <div className="absolute border-4 rounded-full top-2 right-0 border-white shadow-md">

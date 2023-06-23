@@ -23,7 +23,7 @@ function Machine() {
   });
 
   const setFlexData = () => {
-    axios.get("http://192.168.90.71:3001/sensor-data").then((res) => {
+    axios.get("http://localhost:3001/sensor-data").then((res) => {
       if (res.data) {
         setSensorData(res.data.data);
         // console.log(res.data.data);

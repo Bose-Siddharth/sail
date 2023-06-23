@@ -19,7 +19,7 @@ const LoginPage = () => {
     };
 
     // use fetch to send user data to backend and get response back from backend to frontend to check if user exists or not and if user exists then redirect to home page
-    fetch("http://192.168.90.71:3001/sign-in", {
+    fetch("http://localhost:3001/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const LoginPage = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
-          navigate("/");
+          navigate("/home");
         } else {
           popMessage("Try Again", "error" ,data.message); // popMessage(title, icon, massage)
         }

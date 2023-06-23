@@ -1,6 +1,6 @@
 //npm install react-apexcharts apexcharts
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Chart from "react-apexcharts";
 
 function MagneticFlux({ sensorData }) {

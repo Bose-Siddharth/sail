@@ -14,10 +14,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
       </div>
 
       <div className="flex flex-col">
-        <Link to="/">
+        <Link to="/home">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              location.pathname === "/"
+              location.pathname === "/home"
                 ? "bg-blue-100 text-blue-500"
                 : "text-gray-400 hover:bg-blue-100 hover:text-blue-500"
             }`}
@@ -62,10 +62,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             </div>
           </div>
         </Link>
-        <Link to="/sign-in">
+        <Link to="/">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              location.pathname === "/login"
+              location.pathname === "/"
                 ? "bg-blue-100 text-blue-500"
                 : "text-gray-400 hover:bg-blue-100 hover:text-blue-500"
             }`}
