@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"; // Import Link component for internal navigation
 import "./signup.css";
-import popMessage from "../../Utils/PopUp";
 
 const SignUpPage = () => {
   const [firstName, setFirstName] = useState("");
@@ -46,26 +45,17 @@ const SignUpPage = () => {
         navigate("/sign-in");
       })
       .catch((error) => {
-        popMessage("try agian","error".error.message);
+        console.error("Error:", error);
       });
-
   };
 
   return (
-    <div className="signup-container">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "35%",
-        }}
-      >
-        <img src="./assets/iemathree.png" alt="logo"/>
+    <div className="signup-container flex-col lg:flex-row">
+      <div>
+        <img src="./assets/iemathree.png" alt="logo" className="w-60 lg:w-auto lg:mr-36" />
       </div>
-      <div className="signup-form">
+      <div className="signup-form h-full sm:w-2/3 lg:w-1/3 rounded flex flex-col justify-center">
         <h2 className="mt-9 mb-8">Create Account</h2>
-
         <div className="form-part-1 gap-3">
           <input
             type="text"
@@ -83,7 +73,6 @@ const SignUpPage = () => {
           />
         </div>
         <div className="form-part-2">
-        
           <input
             type="text"
             id="employeeId"
@@ -91,8 +80,6 @@ const SignUpPage = () => {
             value={employeeId}
             onChange={(e) => setEmployeeId(e.target.value)}
           />
-        
-        
           <input
             type="email"
             id="username"
@@ -100,8 +87,6 @@ const SignUpPage = () => {
             value={username}
             onChange={(e) => setUserName(e.target.value)}
           />
-        
-        
           <input
             type="text"
             id="phoneNumber"
@@ -109,8 +94,6 @@ const SignUpPage = () => {
             value={phoneNumber}
             onChange={(e) => setPhone(e.target.value)}
           />
-        
-        
           <input
             type="text"
             id="address"
@@ -118,7 +101,6 @@ const SignUpPage = () => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
-        
         </div>
         <div className="form-part-3 gap-3">
           <input
@@ -136,28 +118,17 @@ const SignUpPage = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-
         <div className="btn-center mt-4">
-          <button onClick={handleSignUp}>Sign Up</button>
+          <button onClick={handleSignUp}>Signup</button>
         </div>
         <div className="text-white mb-2 btn-center mt-7">
           <p>
             Already have an account?{" "}
             <Link to="/" className="text-blue-700">
-              Login Instead!
+              Sign In!
             </Link>
           </p>
         </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "35%",
-        }}
-      >
-        <img src="./assets/sailtwoo.png" alt="" />
       </div>
     </div>
   );

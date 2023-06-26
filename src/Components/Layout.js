@@ -4,26 +4,28 @@ import TopBar from "./TopBar";
 import { Transition } from "@headlessui/react";
 
 export default function Layout({ children }) {
-  const [showNav, setShowNav] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
+  const [showNav, setShowNav] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
-  function handleResize() {
-    if (window.innerWidth <= 640) {
+  const handleResize = () => {
+    if (window.innerWidth <= 600) {
       setShowNav(false);
       setIsMobile(true);
     } else {
       setShowNav(true);
       setIsMobile(false);
     }
-  }
+  };
 
   useEffect(() => {
-    if (typeof window != "undefined") {
-      document.addEventListener("resize", handleResize);
-    }
+    handleResize();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      document.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 

@@ -3,36 +3,72 @@ import DeviceCard from '../../Components/Devices/DeviceCard'
 
 function Devices() {
   return (
-    <div className="grid grid-cols-4 px-4 md:px-16 gap-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 px-5 lg:px-10 gap-2">
       <DeviceCard
         name="Billet HEC CTF1"
         serial="ELMIN112022-00148"
-        td="2"
-        wd="1"
+        connectedDevices={[
+          {
+            name: "D1",
+            status: "warning"
+          }
+        ]}
       />
       <DeviceCard
         name="Billet HEC CTF2"
         serial="ELMIN112022-00150"
-        td="2"
-        wd="1"
+        connectedDevices={[
+          {
+            name: "D1",
+            status: "good"
+          },
+          {
+            name: "D2",
+            status: "warning"
+          }
+        ]}
       />
       <DeviceCard
-        name="Billet OCC CTF 1"
+        name="Billet OCC CTF1"
         serial="ELMIN112022-00152"
-        td="2"
-        wd="1"
+        connectedDevices={[
+          {
+            name: "D1",
+            status: "good"
+          },
+          {
+            name: "D2",
+            status: "warning"
+          },
+          {
+            name: "D3",
+            status: "unacceptable"
+          }
+        ]}
       />
       <DeviceCard
-        name="Billet OCC CTF 2"
+        name="Billet OCC CTF2"
         serial=" ELMIN112022-00154"
-        td="2"
-        wd="1"
+        connectedDevices={[
+          {
+            name: "D1",
+            status: "good"
+          }
+        ]}
       />
       <DeviceCard
-        name="Bloom ICW CTF 1"
+        name="Bloom ICW CTF1"
         serial="ELMIN112022-00156"
-        td="2"
-        wd="1"
+        connectedDevices={[
+          {
+            name: "D1",
+            status: "good"
+          },
+          {
+            name: "D2",
+            status: "unacceptable"
+          }
+        ]}
       />
     </div>
   )

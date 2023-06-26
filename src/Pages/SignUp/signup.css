@@ -6,37 +6,34 @@ body {
 .signup-container {
   display: flex;
   height: 100vh;
-  /* width: 100%; */
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../../../public/assets/bgimage.jpeg");
   justify-content: center !important;
   align-items: center !important;
-  background-position: center;
 }
 
 .signup-form {
-  width: 30%;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(6px);
   padding: 10px 30px 10px 30px;
- 
 }
 
-.form-part-1{
+.form-part-1 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.form-part-2{
+
+.form-part-2 {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  /* margin-left: -12%; */
-  }
-.form-part-3{
+}
+
+.form-part-3 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,15 +64,8 @@ button:hover {
   background-color: #0e88cf;
 }
 
-.btn-center{
+.btn-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
-
-/* p {
-    text-align: center;
-    margin-top: 20px;
-  } */

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import popMessage from "../../Utils/PopUp";
+import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
 
 const LoginPage = () => {
@@ -19,7 +18,7 @@ const LoginPage = () => {
     };
 
     // use fetch to send user data to backend and get response back from backend to frontend to check if user exists or not and if user exists then redirect to home page
-    fetch("http://localhost:3001/sign-in", {
+    fetch("http://192.168.90.71:3001/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,10 +27,11 @@ const LoginPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.status === "success") {
-          navigate("/home");
+          navigate("/");
         } else {
-          popMessage("Try Again", "error" ,data.message); // popMessage(title, icon, massage)
+          alert("Invalid Credentials");
         }
       })
       .catch((err) => {
@@ -47,22 +47,15 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "40%",
-        }}
-      >
+    <div className="login-container flex-col lg:flex-row">
+      <div>
         <img
           src="./assets/iemathree.png"
           alt="logo"
-          className="h-auto"
+          className="w-60 lg:w-auto lg:mr-36"
         />
       </div>
-      <div className="login-form">
+      <div className="login-form w-96 h-full sm:w-2/3 lg:w-1/3 rounded">
         <h2>Login</h2>
         <input
           type="text"
@@ -85,18 +78,8 @@ const LoginPage = () => {
             <br />
             or
           </div>
-          <a href="/sign-up"> Sign Up</a>
+          <Link to="/sign-up">Sign Up!</Link>
         </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "40%",
-        }}
-      >
-        <img src="./assets/sailtwoo.png" alt="" className="h-auto" />
       </div>
     </div>
   );

@@ -13,17 +13,17 @@ import {Link} from "react-router-dom";
 export default function TopBar({ showNav, setShowNav }) {
   return (
     <div
-      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] border-t-4 border-t-teal-500 bg-white z-40 ${
+      className={`fixed w-screen h-16 flex justify-between items-center transition-all duration-[400ms] border-t-4 border-t-teal-500 bg-white z-40 ${
         showNav ? "pl-56" : ""
       }`}
     >
-      <div className="pl-4 md:pl-16">
+      <div className="pl-4 md:pl-16 mr-40">
         <Bars3CenterLeftIcon
           className="h-8 w-8 text-gray-700 cursor-pointer"
           onClick={() => setShowNav(!showNav)}
         />
       </div>
-      <div className="flex items-center pr-4 md:pr-16">
+      <div className="flex items-center pr-4 md:pr-16 min-w-max" >
         <Popover className="relative">
           <Popover.Button className="outline-none mr-5 md:mr-8 cursor-pointer text-gray-700">
             <BellIcon className="h-6 w-6" />
