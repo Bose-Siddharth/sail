@@ -5,7 +5,7 @@ import { HomeIcon, PowerIcon, UserIcon } from "@heroicons/react/24/solid";
 const SideBar = forwardRef(({ showNav }, ref) => {
   const location = useLocation();
   return (
-    <div ref={ref} className="fixed w-56 h-full bg-white shadow-md z-50">
+    <div ref={ref} className="fixed w-56 h-full shadow-md z-50" style={{backgroundColor:"#E6F4F1"}}>
       <div className="flex justify-center mt-7 mb-14 px-14 ">
         <div className="flex flex-col items-center">
           <img className="w-32 h-auto" src="/IEMA.png" alt="company logo" />
