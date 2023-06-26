@@ -43,8 +43,8 @@ function Machine() {
             pointer={{
               elastic: true,
               animationDelay: 0,
-              color:"yellow",
               baseColor:"red",
+              color:"yellow",
             }}
             needle={{
             }}
