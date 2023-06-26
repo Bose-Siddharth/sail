@@ -11,6 +11,7 @@ import LoginPage from "./Pages/Login/Login.js";
 import SignUpPage from "./Pages/SignUp/SignUp";
 import Devices from "./Pages/Devices/Devices";
 import PrivateRoutes from "./Utils/PrivateRoutes"
+import DeviceMonitor from "./Pages/DeviceMonitor/DeviceMonitor";
 
 const queryClient = new QueryClient();
 function App() {
@@ -23,6 +24,7 @@ function App() {
               <Route exact path="/monitor" element={<MonitorData />} />
               <Route exact path="/machine" element={<Machine />} />
               <Route exact path="/devices" element={<Devices />} />
+              <Route exact path="/device-monitor" element={<DeviceMonitor/>} />
             </Route>
             <Route exact  path="/" element={<LoginPage />} />
             <Route exact path="/sign-up" element={<SignUpPage />} />
