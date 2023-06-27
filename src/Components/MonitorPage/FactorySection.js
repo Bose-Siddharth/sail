@@ -1,21 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 function FactorySection({ nameID, location, image, TWclass }) {
   return (
     <Link to="/devices">
-      <div className="factorySectionCard shadow-md hover:shadow-2xl rounded flex flex-col items-center bg-white ">
+      <div className=" max-w-md  shadow-md hover:shadow-2xl rounded flex flex-col items-center bg-white ">
         <div className={TWclass} />
-        <div className="h-48 w-48 border-4 rounded-full -mt-28 flex items-center justify-center backdrop-blur-2xl border-gray-100  shadow-md">
+        <div className="h-40 w-40 xl:h-44 xl:w-44 border-4 rounded-full -mt-28 flex items-center justify-center backdrop-blur-2xl border-gray-100  shadow-md">
           <img
             src={image}
-            className="h-40 w-40 rounded-full object-cover "
+            className="w-32 h-32 xl:h-36 xl:w-36  rounded-full object-cover "
             alt="factory section"
           ></img>
         </div>
         <div className="w-full p-3 pb-7">
           <div className=" w-full text-center flex flex-col">
-            <span className="text-gray-700 text-3xl font-bold">{nameID}</span>
+            <span className="text-gray-700 text-3xl lg:text-2xl sm:text-2xl font-bold">{nameID}</span>
             <span className="text-gray-700 text-md font-semibold">
               {location}
             </span>
@@ -68,7 +69,7 @@ function FactorySection({ nameID, location, image, TWclass }) {
               </div>
 
               {/* pop up massage here */}
-              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
+              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 right-0 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
                 <p class="font-bold">Healthy devices</p>
                 <p class="text-sm">
                   Active devices that are sending accurate sensor data to the
@@ -103,7 +104,7 @@ function FactorySection({ nameID, location, image, TWclass }) {
               </div>
 
               {/* pop up massage here */}
-              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
+              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 right-0 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
                 <p class="font-bold">Total devices</p>
                 <p class="text-sm">All registered devices in that section</p>
               </div>

@@ -17,10 +17,9 @@ body {
 
 .login-form {
   /* position: absolute; */
-  width: 400px;
   padding: 30px;
   border-radius: 5px;
-  height: 400px;
+  height: 100%;
   /* margin-left: 100%; */
   /* z-index: 2; */
   background: rgba(0, 0, 0, 0.25);
@@ -29,8 +28,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
-  
+  align-items: center;
+
 }
 
 h2 {
