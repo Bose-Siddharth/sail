@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Chart from "react-apexcharts";
-import "./TempGraph.css"
 
 function TempGraph({ sensorData }) {
   const [options] = useState({
@@ -28,10 +27,12 @@ function TempGraph({ sensorData }) {
     },
   ]);
 
+  const XAxisData = useRef([]);
+
   useEffect(() => {
     setSeries((prevSeries) => {
-      const XAxis = sensorData.map((data) => data.A.Temperature);
-      return [{ ...prevSeries[0], data: XAxis }];
+      XAxisData.current = sensorData[sensorData.length-1].A.Temperature;
+      return [{ ...prevSeries[0], data: XAxisData.current }];
     });
   }, [sensorData]);
 

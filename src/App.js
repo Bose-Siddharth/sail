@@ -22,9 +22,9 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route exact path="/home" element={<Home />} />
               <Route exact path="/monitor" element={<MonitorData />} />
-              <Route exact path="/machine" element={<Machine />} />
               <Route exact path="/devices" element={<Devices />} />
               <Route exact path="/device-monitor" element={<DeviceMonitor/>} />
+              <Route exact path="/diagnosis" element={<Machine/>} />
             </Route>
             <Route exact  path="/" element={<LoginPage />} />
             <Route exact path="/sign-up" element={<SignUpPage />} />

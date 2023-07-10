@@ -1,27 +1,36 @@
 import GaugeComponent from "react-gauge-component";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import "./TemperatureGauge.css";
+import "./Gauge.css";
 
-function TemperatureGauge({ value, minValue, maxValue, breaks, unit, name }) {
+function Gauge({ value, minValue, maxValue, breaks, unit, name }) {
+  const setWidth = () => {
+    if (window.innerWidth <= 600) return "25vw";
+    else if (600 < window.innerWidth && window.innerWidth <= 800) return "37%";
+    else if (800 < window.innerWidth && window.innerWidth <= 1200) return "35%";
+    else if (1200 < window.innerWidth) return "45%";
+  };
+
   const limits = [...breaks, maxValue];
   const colors = ["#5be12c", "#f5cd19", "#ea4228"];
-  const [width, setWidth] = useState(() => {
-    if (window.innerWidth <= 600) return "20vw"
-    else if (600 < window.innerWidth && window.innerWidth <= 800) return "37%"
-    else if (800 < window.innerWidth && window.innerWidth <= 1200) return "40%"
-    else if (1200 < window.innerWidth) return "60%"
-  });
 
-  const [poniterColour, setPointerColour] = useState(
-    (() => {
-      if (minValue < value && value <= limits[0]) return "#5be12c";
+  const width = setWidth();
+
+  const [poniterColour, setPointerColour] = useState();
+  const [gaugeValue, setGaugeValue] = useState(value);
+
+  useEffect(() => {
+    const selectColor = () => {
+      if (value <= limits[0]) return "#5be12c";
       else if (limits[0] < value && value <= limits[1]) return "#f5cd19";
-      else if (limits[1] < value && value <= maxValue) return "#ea4228";
-    })()
-  );
+      else if (limits[1] < value) return "#ea4228";
+    };
+
+    setPointerColour(selectColor());
+    setGaugeValue(value);
+  }, [value]);
 
   return (
-    <div className="bg-gray-900 rounded-2xl shadow-xl p-3 mt-1">
+    <div className="bg-gray-900 rounded-2xl shadow-xl p-3">
       <GaugeComponent
         type="radial"
         value={value}
@@ -65,10 +74,11 @@ function TemperatureGauge({ value, minValue, maxValue, breaks, unit, name }) {
         }}
         pointer={{
           elastic: true,
-          animationDelay: 0,
+          animationDelay: 10,
           color: poniterColour,
         }}
       />
+
       <div className="xl:text-xl sm:text-sm text-white text-semibold text-center">
         {name}
       </div>
@@ -76,4 +86,4 @@ function TemperatureGauge({ value, minValue, maxValue, breaks, unit, name }) {
   );
 }
 
-export default TemperatureGauge;
+export default Gauge;

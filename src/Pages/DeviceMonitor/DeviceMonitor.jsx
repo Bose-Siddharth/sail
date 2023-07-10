@@ -1,11 +1,38 @@
 import React from "react";
-import TemperatureGauge from "../../Components/DeviceMonitor/Temperature/TemperatureGauge";
+import { useQuery } from "react-query";
+import Loading from "../../Components/Loading";
+import MeterComponent from "../../Components/DeviceMonitor/MeterComponent";
 
 function DeviceMonitor() {
-  return (
-    <div className="px-4 md:px-16">
+
+  const fetchData = async () => {
+      const response = await fetch("http://localhost:3001/sensor-data");
+      const data = await response.json();
+      console.log(data.data)
+      return data.data;
+  };
+
+  const { data } = useQuery("data", fetchData, { refetchInterval: 2000});
+
+  if (data == null) {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          width: "80vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Loading/>
+      </div>
+    );
+  }
+  else return (
+    <div className="px-4 md:px-10">
       {/* page description */}
-      <p className="text-gray-700 text-3xl mt-5 font-bold">Monitor</p>
+      <p className="text-gray-700 text-3xl font-bold">Monitor</p>
       <p className="text-gray-500 text-lg mb-5 font-semibold">
         {window.location.pathname}
       </p>
@@ -54,46 +81,52 @@ function DeviceMonitor() {
       </div>
       {/* monitor page */}
       <div className="w-full my-5 rounded-lg">
-        <div className="flex flex-col sm:flex-row gap-3">
-          <div className="flex flex-col sm:w-1/3 justify-start items-center bg-gray-900 rounded-lg pb-10">
-            <div className="text-white w-full text-xs md:text-base lg:text-lg xl:text-xl font-bold tracking-widest bg-grad bg-gradient-to-r from-red-500 to-blue-500 rounded-t-lg text-center">
+        <div className="flex flex-col sm:flex-row gap-3 ">
+          {/* left half */}
+          {/* temperature  */}
+          <div className=" flex flex-col sm:w-1/4 justify-start items-center bg-gray-900 rounded-lg">
+            <div className="text-white w-full text-xs md:text-base lg:text-lg xl:text-xl font-bold tracking-wider bg-grad bg-gradient-to-r from-red-500 to-blue-500 rounded-t-lg text-center">
             TEMPERATURE
             </div>
             <div className="flex flex-row sm:flex-col h-full justify-start"> 
-              <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="°C" name="Machine Skin"/>
-              <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="°C" name="DE"/>
-              <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="°C" name="NDE"/>
+              <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0)) } minValue={0} maxValue={20} breaks={[10,15]} unit="°C" name="Machine Skin"/>
+              <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0)) } minValue={0} maxValue={10} breaks={[2,4]} unit="°C" name="DE"/>
             </div>
           </div>
-          <div className="flex flex-col gap-2 justify-center items-center w-full">
-            <div className="w-full h-full pb-7 text-center rounded-lg shadow-inner border-2 border-green-500 border-opacity-50">
-              <div className="text-white text-xs md:text-base lg:text-lg xl:text-xl font-bold tracking-widest bg-gradient-to-r from-green-500 to-blue-500 rounded-t-md">
+          {/* right half */}
+          <div className="flex flex-col sm:flex-row gap-2 justify-start">
+            {/* vibration  */}
+            <div className="w-full h-max text-center rounded-lg shadow-inner bg-green-50 border-2 border-green-500 border-opacity-50">
+              <div className="text-white text-xs md:text-base lg:text-lg xl:text-xl font-bold tracking-wider bg-gradient-to-r from-green-500 to-blue-500 rounded-t-md">
               VIBRATION
               </div>
-              <div className="flex flex-row flex-wrap gap-1 items-center p-1 justify-around w-full h-full">
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="mm/sec" name="X Axis"/>
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="mm/sec" name="Y Axis"/>
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="mm/sec" name="Z Axis"/>
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="mm/sec²" name="Peak"/>
+              <div className="flex flex-row flex-wrap gap-1 items-center p-5 justify-center w-full h-full">
+                <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_X)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="X Axis"/>
+                <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_Y)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="Y Axis"/>
+                <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_Z)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="Z Axis"/>
+                <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_Y)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec²" name="Peak"/>
               </div>
             </div> 
-            <div className="w-full h-full pb-7 text-center rounded-lg shadow-inner border-2 border-sky-500 border-opacity-50">
-              <div className="text-white text-xs md:text-base lg:text-lg xl:text-xl font-bold tracking-widest bg-gradient-to-r from-sky-500 to-indigo-500 rounded-t-md">
+            {/* magnetic flux  */}
+            <div className="w-full h-max text-center rounded-lg shadow-inner bg-blue-50 border-2 border-sky-500 border-opacity-50">
+              <div className="text-white text-xs md:text-base lg:text-lg xl:text-xl font-bold tracking-wider bg-gradient-to-r from-sky-500 to-indigo-500 rounded-t-md truncate ">
               MAGNETIC FLUX
               </div>
-              <div className="flex flex-row flex-wrap gap-1 items-center p-1 justify-around w-full h-full">
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="X Axis"/>
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Y Axis"/>
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Z Axis"/>
+              <div className="flex flex-row flex-wrap gap-1 items-center p-5 justify-center w-full h-full">
+                <MeterComponent value={data[data.length-1].A.EMF_X} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="X Axis"/>
+                <MeterComponent value={data[data.length-1].A.EMF_Y} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Y Axis"/>
+                <MeterComponent value={data[data.length-1].A.EMF_Z} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Z Axis"/>
+                <MeterComponent value={data[data.length-1].A.EMF_Y} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Peak"/>
               </div>
             </div>
-            <div className="w-full h-full pb-7 text-center rounded-lg shadow-inner border-2 border-orange-500 border-opacity-50">
-              <div className="text-white text-xs md:text-base lg:text-lg xl:text-xl font-bold tracking-widest bg-gradient-to-r from-orange-500 to-red-500 rounded-t-md">
+            {/* MICROPHONICS */}
+            <div className=" w-full h-max sm:w-3/4  text-center rounded-lg shadow-inner bg-orange-50 border-2 border-orange-500 border-opacity-50">
+              <div className="text-white text-xs md:text-base lg:text-lg xl:text-xl font-bold tracking-wider bg-gradient-to-r from-orange-500 to-red-500 rounded-t-md">
               MICROPHONICS
               </div>
-              <div className="flex flex-row flex-wrap gap-1 items-center p-1 justify-around w-full h-full">
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="dB" name="Ulta Sound"/>
-                <TemperatureGauge value={10} minValue={0} maxValue={50} breaks={[20,40]} unit="dB" name="Noise"/>  
+              <div className="flex flex-row sm:flex-col flex-wrap gap-1 items-center p-5 justify-center w-full h-full">
+                <MeterComponent value={Math.floor(Math.random() * (50 - 0+1) + 0)} minValue={0} maxValue={100} breaks={[20,60]} unit="dB" name="Ulta Sound"/>
+                <MeterComponent value={Math.floor(Math.random() * (50 - 0+1) + 0)} minValue={0} maxValue={100} breaks={[20,40]} unit="dB" name="Noise"/>  
               </div>
             </div>
           </div>
