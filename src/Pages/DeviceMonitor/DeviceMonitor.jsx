@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import Loading from "../../Components/Loading";
 import MeterComponent from "../../Components/DeviceMonitor/MeterComponent";
+import HealthBar from "../../Components/DeviceMonitor/HealthBar/HealthBar";
 
 function DeviceMonitor() {
 
@@ -14,22 +15,23 @@ function DeviceMonitor() {
 
   const { data } = useQuery("data", fetchData, { refetchInterval: 2000});
 
-  if (data == null) {
-    return (
-      <div
-        style={{
-          height: "80vh",
-          width: "80vw",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Loading/>
-      </div>
-    );
-  }
-  else return (
+  // if (data == null) {
+  //   return (
+  //     <div
+  //       style={{
+  //         height: "80vh",
+  //         width: "80vw",
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //       }}
+  //     >
+  //       <Loading/>
+  //     </div>
+  //   );
+  // }
+  // else
+   return (
     <div className="px-4 md:px-10">
       {/* page description */}
       <p className="text-gray-700 text-3xl font-bold">Monitor</p>
@@ -40,20 +42,20 @@ function DeviceMonitor() {
       <div className="grid lg:grid-cols-5 sm:grid-cols-2 gap-3 text-center ">
         <div className="rounded-lg w-full h-full m-auto shadow bg-gray-200">
           <div className="text-white h-6 rounded-t-lg border-blue-600 font-semibold sm:text-sm block bg-blue-600">
-            Department
+            Address
           </div>
           <div className="text-gray-800 w-full text-lg font-bold tracking-widest p-1 lg:h-fit truncate hover:overflow-visible hover:whitespace-normal">
-            BOF
+            Section-A
           </div>
         </div>
-        <div className="rounded-lg w-full h-full m-auto shadow bg-gray-200">
+        {/* <div className="rounded-lg w-full h-full m-auto shadow bg-gray-200">
           <div className="text-white h-6 rounded-t-lg border-blue-600 font-semibold sm:text-sm block bg-blue-600">
             Site
           </div>
           <div className="text-gray-800 w-full text-lg font-bold tracking-widest p-1 lg:h-fit truncate hover:overflow-visible hover:whitespace-normal">
             Billet WTP
           </div>
-        </div>
+        </div> */}
         <div className="rounded-lg w-full h-full m-auto shadow bg-gray-200">
           <div className="text-white h-6 rounded-t-lg border-blue-600 font-semibold sm:text-sm block bg-blue-600">
             Application
@@ -67,7 +69,7 @@ function DeviceMonitor() {
             Machine
           </div>
           <div className="text-gray-800 w-full text-lg font-bold tracking-widest p-1 lg:h-fit truncate hover:overflow-visible hover:whitespace-normal">
-            Billet HEC CTF 1 DE
+            Spiral Fan
           </div>
         </div>
         <div className="rounded-lg w-full h-full m-auto shadow bg-gray-200">
@@ -75,7 +77,15 @@ function DeviceMonitor() {
             MUID
           </div>
           <div className="text-gray-800 w-full text-lg font-bold tracking-widest p-1 lg:h-fit truncate hover:overflow-visible hover:whitespace-normal">
-            ELMIN112022-00148
+            XYZ-1232323
+          </div>
+        </div>
+        <div className="rounded-lg w-full h-full m-auto shadow bg-gray-200">
+          <div className="text-white h-6 rounded-t-lg border-blue-600 font-semibold sm:text-sm block bg-blue-600">
+            Health status
+          </div>
+          <div className="text-gray-800 w-full text-lg font-bold tracking-widest p-1 lg:h-fit truncate hover:overflow-visible hover:whitespace-normal">
+            <HealthBar/>
           </div>
         </div>
       </div>
@@ -101,10 +111,11 @@ function DeviceMonitor() {
               VIBRATION
               </div>
               <div className="flex flex-row flex-wrap gap-1 items-center p-5 justify-center w-full h-full">
-                <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_X)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="X Axis"/>
-                <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_Y)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="Y Axis"/>
-                <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_Z)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="Z Axis"/>
-                <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_Y)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec²" name="Peak"/>
+                <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0))} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="X Axis"/>
+                <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0))} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="Y Axis"/>
+                <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0))} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec" name="Z Axis"/>
+                <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0))} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec²" name="Peak"/>
+                {/* <MeterComponent value={Math.abs(data[data.length-1].A.Vibration_Y)} minValue={0} maxValue={11} breaks={[5,8]} unit="mm/sec²" name="Peak"/> */}
               </div>
             </div> 
             {/* magnetic flux  */}
@@ -113,10 +124,12 @@ function DeviceMonitor() {
               MAGNETIC FLUX
               </div>
               <div className="flex flex-row flex-wrap gap-1 items-center p-5 justify-center w-full h-full">
-                <MeterComponent value={data[data.length-1].A.EMF_X} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="X Axis"/>
-                <MeterComponent value={data[data.length-1].A.EMF_Y} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Y Axis"/>
-                <MeterComponent value={data[data.length-1].A.EMF_Z} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Z Axis"/>
-                <MeterComponent value={data[data.length-1].A.EMF_Y} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Peak"/>
+                <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0))} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="X Axis"/>
+                <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0))} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Y Axis"/>
+                <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0))} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Z Axis"/>
+                <MeterComponent value={Math.floor((Math.random() * (10 - 0+1) + 0))} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Peak"/>
+                {/* <MeterComponent value={data[data.length-1].A.EMF_Y} minValue={0} maxValue={50} breaks={[20,40]} unit="gauss " name="Peak"/> */}
+
               </div>
             </div>
             {/* MICROPHONICS */}
