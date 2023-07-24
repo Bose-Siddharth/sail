@@ -34,9 +34,9 @@ function Sensor() {
    return (
     <div className="px-4 md:px-10">
       {/* page description */}
-      <p className="text-gray-700 text-3xl font-bold">Monitor</p>
+      <p className="text-gray-700 text-3xl font-bold">Sensor</p>
       <p className="text-gray-500 text-lg mb-5 font-semibold">
-        {window.location.pathname}
+      | {window.location.pathname.slice(1).replace("/",">" )}
       </p>
       {/* device description */}
       <div className="grid lg:grid-cols-5 sm:grid-cols-2 gap-3 text-center ">

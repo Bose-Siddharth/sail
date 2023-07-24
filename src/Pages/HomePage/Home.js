@@ -1,11 +1,21 @@
+import { Cog8ToothIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="px-4 md:px-16">
-      <p className="text-gray-700 text-3xl mb-16 font-bold">Dashboard</p>
-
+    <div className="px-4 md:px-10">
+      <div className=" flex justify-between items-center">
+        <div>
+          <p className="text-gray-700 text-3xl font-bold">Dashboard</p>
+          <p className="text-gray-500 text-lg mb-5 font-semibold">
+            {window.location.pathname}
+          </p>
+        </div>
+        <div>
+          <Cog8ToothIcon className="h-8 w-8" />
+        </div>
+      </div>
       <div className="grid lg:grid-cols-3 gap-5 mb-16">
         <div className="rounded bg-white h-auto min-height-40 shadow bg-gradient-to-r from-violet-400 to-violet-300">
           <Link to="/devices">

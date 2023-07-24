@@ -3,8 +3,11 @@ import ClientCards from "../../Components/ClientsPage/ClientCards";
 
 function Clients() {
   return (
-    <div className="px-4 md:px-16">
-      <p className="text-gray-700 text-3xl mb-16 font-bold">Monitor</p>
+    <div className="px-4 md:px-10">
+      <p className="text-gray-700 text-3xl font-bold">Clients</p>
+      <p className="text-gray-500 text-lg mb-5 font-semibold">
+        | {window.location.pathname.slice(1).replace("/",">" )}
+      </p>
 
       <div className="grid lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-2 2xl:grid-cols-5 gap-7 mb-16">
         <ClientCards

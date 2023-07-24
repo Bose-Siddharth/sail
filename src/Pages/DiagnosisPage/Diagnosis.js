@@ -59,7 +59,10 @@ function Daignosis() {
 
   return (
     <div className="px-4 md:px-16">
-      <p className="text-gray-700 text-3xl mb-16 font-bold">Machine</p>
+      <p className="text-gray-700 text-3xl font-bold">Diagnosis</p>
+      <p className="text-gray-500 text-lg mb-5 font-semibold">
+        {window.location.pathname}
+      </p>
 
       <div className="grid lg:grid-cols-4 gap-4 mb-16">
         <div className="rounded-lg bg-white min-h-30 w-full border m-auto p-5 shadow">

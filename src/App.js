@@ -22,8 +22,8 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route exact path="/home" element={<Home />} />
               <Route exact path="/clients" element={<Clients />} />
-              <Route exact path="/assets" element={<Assets />} />
-              <Route exact path="/sensor-dashboard" element={<Sensor/>} />
+              <Route exact path="/clients/assets" element={<Assets />} />
+              <Route exact path="/clients/assets/sensor-dashboard" element={<Sensor/>} />
               <Route exact path="/diagnosis" element={<Daignosis/>} />
             </Route>
             <Route exact  path="/" element={<SignIn />} />
