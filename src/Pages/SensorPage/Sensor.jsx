@@ -1,10 +1,10 @@
 import React from "react";
 import { useQuery } from "react-query";
 import Loading from "../../Components/Loading";
-import MeterComponent from "../../Components/DeviceMonitor/MeterComponent";
-import HealthBar from "../../Components/DeviceMonitor/HealthBar/HealthBar";
+import MeterComponent from "../../Components/SensorPage/MeterComponent";
+import HealthBar from "../../Components/SensorPage/HealthBar/HealthBar";
 
-function DeviceMonitor() {
+function Sensor() {
 
   const fetchData = async () => {
       const response = await fetch("http://localhost:3001/sensor-data");
@@ -149,4 +149,4 @@ function DeviceMonitor() {
   );
 }
 
-export default DeviceMonitor;
+export default Sensor;

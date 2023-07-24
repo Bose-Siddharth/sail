@@ -8,14 +8,14 @@ import {
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
-import VibrationChart from "../../Components/MachinePage/VibrationChart";
-import MagneticFlux from "../../Components/MachinePage/MagneticFlux";
+import VibrationChart from "../../Components/DiagnosisPage/VibrationChart";
+import MagneticFlux from "../../Components/DiagnosisPage/MagneticFlux";
 import Loading from "../../Components/Loading";
-import CustomGauge from "../../Components/MachinePage/CustomGauge/CustomGauge";
-import TempGraph from "../../Components/MachinePage/TempGraph/TempGraph";
-import UltrasonicGauge from "../../Components/MachinePage/Ultrasonic/UltrasonicGauge";
+import CustomGauge from "../../Components/DiagnosisPage/CustomGauge/CustomGauge";
+import TempGraph from "../../Components/DiagnosisPage/TempGraph/TempGraph";
+import UltrasonicGauge from "../../Components/DiagnosisPage/Ultrasonic/UltrasonicGauge";
 
-function Machine() {
+function Daignosis() {
   const [sensorData, setSensorData] = useState(null);
   const [view, setView] = useState({
     graph: false,
@@ -191,4 +191,4 @@ function Machine() {
   );
 }
 
-export default Machine;
+export default Daignosis;

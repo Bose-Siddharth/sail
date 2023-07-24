@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./login.css";
 
-const LoginPage = () => {
+const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const LoginPage = () => {
     };
 
     // use fetch to send user data to backend and get response back from backend to frontend to check if user exists or not and if user exists then redirect to home page
-    fetch("http://192.168.90.71:3001/sign-in", {
+    fetch("http://192.168.90.71:3001/v1/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const LoginPage = () => {
       .then((data) => {
         console.log(data);
         if (data.status === "success") {
-          navigate("/");
+          navigate("/home");
         } else {
           alert("Invalid Credentials");
         }
@@ -85,4 +85,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignIn;

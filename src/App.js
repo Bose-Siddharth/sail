@@ -3,15 +3,15 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import "./App.css";
-
-import Home from "./Pages/Home/Home";
-import Machine from "./Pages/Machine/Machine";
-import MonitorData from "./Pages/Monitor/MonitorData";
-import LoginPage from "./Pages/Login/Login.js";
-import SignUpPage from "./Pages/SignUp/SignUp";
-import Devices from "./Pages/Devices/Devices";
 import PrivateRoutes from "./Utils/PrivateRoutes"
-import DeviceMonitor from "./Pages/DeviceMonitor/DeviceMonitor";
+
+import Home from "./Pages/HomePage/Home";
+import Clients from "./Pages/ClientsPage/Clients";
+import Assets from "./Pages/AssetsPage/Assets";
+import Sensor from "./Pages/SensorPage/Sensor";
+import Daignosis from "./Pages/DiagnosisPage/Diagnosis";
+import SignIn from "./Pages/SignIn/SignIn";
+import SignUp from "./Pages/SignUp/SignUp";
 
 const queryClient = new QueryClient();
 function App() {
@@ -21,13 +21,14 @@ function App() {
           <Routes>
             <Route element={<PrivateRoutes />}>
               <Route exact path="/home" element={<Home />} />
-              <Route exact path="/monitor" element={<MonitorData />} />
-              <Route exact path="/devices" element={<Devices />} />
-              <Route exact path="/device-monitor" element={<DeviceMonitor/>} />
-              <Route exact path="/diagnosis" element={<Machine/>} />
+              <Route exact path="/clients" element={<Clients />} />
+              <Route exact path="/assets" element={<Assets />} />
+              <Route exact path="/sensor-dashboard" element={<Sensor/>} />
+              <Route exact path="/diagnosis" element={<Daignosis/>} />
             </Route>
-            <Route exact  path="/" element={<LoginPage />} />
-            <Route exact path="/sign-up" element={<SignUpPage />} />
+            <Route exact  path="/" element={<SignIn />} />
+            <Route exact  path="/sign-in" element={<SignIn />} />
+            <Route exact path="/sign-up" element={<SignUp />} />
           </Routes>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />

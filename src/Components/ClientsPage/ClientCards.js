@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-function FactorySection({ nameID, location, image, TWclass }) {
+function clientCards({ nameID, location, image, TWclass }) {
   return (
-    <Link to="/devices">
+    <Link to="/assets">
       <div className=" max-w-md  shadow-md hover:shadow-2xl rounded flex flex-col items-center bg-white ">
         <div className={TWclass} />
         <div className="h-40 w-40 xl:h-44 xl:w-44 border-4 rounded-full -mt-28 flex items-center justify-center backdrop-blur-2xl border-gray-100  shadow-md">
@@ -116,4 +116,4 @@ function FactorySection({ nameID, location, image, TWclass }) {
   );
 }
 
-export default FactorySection;
+export default clientCards;

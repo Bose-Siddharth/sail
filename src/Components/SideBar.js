@@ -30,7 +30,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             </div>
           </div>
         </Link>
-        <Link to="/monitor">
+        <Link to="/clients">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
               location.pathname === "/monitor"
@@ -42,7 +42,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
               <UserIcon className="h-5 w-5" />
             </div>
             <div className="text-blue-600">
-              <p>Monitor</p>
+              <p>Clients</p>
             </div>
           </div>
         </Link>

@@ -121,7 +121,7 @@ function HealthBar() {
         return (
           <span
             key={index}
-            className={`${BackGroundColor} w-full relative border-gray-200 border-r rounded-sm hover:rounded-md hover:border-2`}
+            className={`${BackGroundColor} w-full relative border-gray-200 border-r rounded-sm hover:rounded-md hover:border-2 cursor-pointer`}
           >
             <div className={`w-full h-full peer`}></div>
             <span

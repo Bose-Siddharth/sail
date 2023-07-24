@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function DeviceCard(props) {
   return (
-    <Link to="/device-monitor" >
+    <Link to="/sensor-dashboard" >
       <div className="h-48 max-w-sm min-h-full bg-slate-100 rounded-xl shadow-md hover:shadow-lg flex mt-3 p-3">
         <div className="w-6/12 p-3 flex flex-col justify-between items-center">
           <div>

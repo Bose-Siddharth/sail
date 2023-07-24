@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"; // Import Link component for internal navigation
 import "./signup.css";
 
-const SignUpPage = () => {
+const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUserName] = useState("");
@@ -32,7 +32,7 @@ const SignUpPage = () => {
       password,
     };
 
-    fetch("http://192.168.90.71:3001/sign-up", {
+    fetch("http://192.168.90.71:3001/v1/sign-up", {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
@@ -134,4 +134,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUp;

@@ -1,7 +1,7 @@
 import React from 'react'
-import DeviceCard from '../../Components/Devices/DeviceCard'
+import DeviceCard from '../../Components/AssetsPage/DeviceCard'
 
-function Devices() {
+function Assets() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 px-5 lg:px-10 gap-2">
       <DeviceCard
@@ -74,4 +74,4 @@ function Devices() {
   )
 }
 
-export default Devices
+export default Assets
