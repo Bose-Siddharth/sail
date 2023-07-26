@@ -36,9 +36,9 @@ function clientCards({ nameID, location, image, TWclass }) {
               </div>
 
               {/* pop up massage here */}
-              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
-                <p class="font-bold">Active devices</p>
-                <p class="text-sm">
+              <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
+                <p className="font-bold">Active devices</p>
+                <p className="text-sm">
                   Total number of devices that are connected to the server
                 </p>
               </div>
@@ -52,9 +52,9 @@ function clientCards({ nameID, location, image, TWclass }) {
               </div>
 
               {/* pop up massage here */}
-              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
-                <p class="font-bold">Ofline devices</p>
-                <p class="text-sm">
+              <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
+                <p className="font-bold">Ofline devices</p>
+                <p className="text-sm">
                   Total number of devices that are not connected to the server
                 </p>
               </div>
@@ -69,9 +69,9 @@ function clientCards({ nameID, location, image, TWclass }) {
               </div>
 
               {/* pop up massage here */}
-              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 right-0 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
-                <p class="font-bold">Healthy devices</p>
-                <p class="text-sm">
+              <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 right-0 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
+                <p className="font-bold">Healthy devices</p>
+                <p className="text-sm">
                   Active devices that are sending accurate sensor data to the
                   server
                 </p>
@@ -88,9 +88,9 @@ function clientCards({ nameID, location, image, TWclass }) {
               </div>
 
               {/* pop up massage here */}
-              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
-                <p class="font-bold">Defected devices</p>
-                <p class="text-sm">
+              <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
+                <p className="font-bold">Defected devices</p>
+                <p className="text-sm">
                   Active devices that are not sending sensor data to the console
                 </p>
               </div>
@@ -104,9 +104,9 @@ function clientCards({ nameID, location, image, TWclass }) {
               </div>
 
               {/* pop up massage here */}
-              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 right-0 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
-                <p class="font-bold">Total devices</p>
-                <p class="text-sm">All registered devices in that section</p>
+              <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md w-52 rounded-sm absolute bottom-16 right-0 opacity-0 -z-10 peer-hover:opacity-100 peer-hover:z-10">
+                <p className="font-bold">Total devices</p>
+                <p className="text-sm">All registered devices in that section</p>
               </div>
             </div>
           </div>

@@ -19,7 +19,7 @@ function Graph({ value ,name }) {
           },
         },
         xaxis: {
-          categories: ["10:00", "10:01", "10:02", "10:03", "10:04", "10:05", "10:06", "10:07", "10:08"],
+          categories: ["10:00", "10:01", "10:02", "10:03","10:00", "10:01", "10:02", "10:03", "10:04", "10:05", "10:06", "10:07", "10:08","10:01", "10:02", "10:03", "10:04", "10:05", "10:06", "10:07", "10:08"],
         },
       });
     
@@ -34,15 +34,15 @@ function Graph({ value ,name }) {
     
       useEffect(() => {
         setSeries((prevSeries) => {
-          XAxisData.current =[...XAxisData.current.slice(-5),value];
+          XAxisData.current =[...XAxisData.current.slice(-10),value];
           return [{ ...prevSeries[0], data: XAxisData.current }];
         });
       }, [value]);
     
       return (
-        <>
-          <Chart options={options} series={series} type="area" />
-        </>
+        <div className="flex-1 p-5">
+          <Chart options={options} series={series} type="area" height={'100%'} width={'100%'} />
+        </div>
 
       );
 }

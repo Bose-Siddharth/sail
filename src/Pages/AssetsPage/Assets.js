@@ -1,20 +1,20 @@
 import React from "react";
 import DeviceCard from "../../Components/AssetsPage/DeviceCard";
 import Modal from "../../Utils/Modal";
-import Form from "../../Components/Forms/Form";
+import AssetRegForm from "../../Components/Forms/AssetRegForm";
 
 function Assets() {
   return (
     <div className="px-4 lg:px-10">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mb-5">
         <div>
           <p className="text-gray-700 text-3xl font-bold">Assets</p>
-          <p className="text-gray-500 text-lg mb-5 font-semibold">
+          <p className="text-gray-500 text-lg font-semibold">
             {window.location.pathname}
           </p>
         </div>
         <Modal>
-          <Form/>
+          <AssetRegForm/>
         </Modal>
       </div>
 
