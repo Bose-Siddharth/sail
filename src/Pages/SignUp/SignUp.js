@@ -119,7 +119,7 @@ const SignUp = () => {
           />
         </div>
         <div className="btn-center mt-4">
-          <button onClick={handleSignUp}>Signup</button>
+          <button onClick={handleSignUp} className="bg-blue-700" id="button">Signup</button>
         </div>
         <div className="text-white mb-2 btn-center mt-7">
           <p>
