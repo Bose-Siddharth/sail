@@ -98,7 +98,7 @@ function Sensor() {
             </div>
             <div className="rounded-lg w-full h-full m-auto shadow bg-gray-200">
               <div className="text-white h-6 rounded-t-lg border-blue-600 font-semibold sm:text-sm block bg-blue-600">
-                Machine
+                Asset
               </div>
               <div className="text-gray-800 w-full text-lg font-bold tracking-widest p-1 lg:h-fit truncate hover:overflow-visible hover:whitespace-normal">
                 Spiral Fan
@@ -179,7 +179,7 @@ function Sensor() {
                     maxValue={20}
                     breaks={[10, 15]}
                     unit="°C"
-                    name="Machine Skin"
+                    name="Asset Skin"
                   />
                   <MeterComponent
                     value={data[data.length - 1].A.Temperature}

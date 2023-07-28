@@ -33,7 +33,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         <Link to="/clients">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              location.pathname === "/monitor"
+              location.pathname === "/clients"
                 ? "bg-blue-100 text-blue-500"
                 : "text-gray-400 hover:bg-blue-100 hover:text-blue-500"
             }`}
@@ -49,7 +49,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         <Link to="/diagnosis">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              location.pathname === "/machine"
+              location.pathname === "/diagnosis"
                 ? "bg-blue-100 text-blue-500"
                 : "text-gray-400 hover:bg-blue-100 hover:text-blue-500"
             }`}

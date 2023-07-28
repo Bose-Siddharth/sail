@@ -2,7 +2,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 
 function AssetRegForm({ visible, handleClose }) {
-  const machineTypes = [
+  const assetTypes = [
     "motor",
     "pump",
     "blower",
@@ -10,22 +10,22 @@ function AssetRegForm({ visible, handleClose }) {
     "motor_with_grinder",
   ];
   const [formData, setFormData] = useState({
-    machineType: "",
-    machineName: "",
-    machineAddress: "",
-    machineSite: "",
-    machineApplication: "",
-    machineDescription: "",
+    assetType: "",
+    assetName: "",
+    assetAddress: "",
+    assetSite: "",
+    assetApplication: "",
+    assetDescription: "",
     sensors: [],
   });
 
-  const handleMachineTypeChange = (e) => {
-    const selectedMachineType = e.target.value;
+  const handleAssetTypeChange = (e) => {
+    const selectedAssetType = e.target.value;
     setFormData((prevData) => ({
       ...prevData,
-      machineType: selectedMachineType,
+      assetType: selectedAssetType,
       sensors: Array.from(
-        { length: getSensorCount(selectedMachineType) },
+        { length: getSensorCount(selectedAssetType) },
         () => ({
           id: "",
           name: "",
@@ -36,8 +36,8 @@ function AssetRegForm({ visible, handleClose }) {
     }));
   };
 
-  const getSensorCount = (machineType) => {
-    switch (machineType) {
+  const getSensorCount = (assetType) => {
+    switch (assetType) {
       case "motor":
       case "pump":
       case "blower":
@@ -80,29 +80,42 @@ function AssetRegForm({ visible, handleClose }) {
       >
         <button
           type="button"
-          onClick={handleClose}
+          onClick={() => {
+            setFormData({
+              assetType: "",
+              assetName: "",
+              assetAddress: "",
+              assetSite: "",
+              assetApplication: "",
+              assetDescription: "",
+              sensors: [],
+            });
+            handleClose();
+          }}
           className="absolute top-0 right-0 m-3 p-1 bg-blue-400 hover:bg-blue-900 w-min rounded-full"
         >
           <XMarkIcon className="w-5 text-white" />
         </button>
-        <h1 className="text-center text-gray-700 text-3xl font-bold mb-5">Asset Register</h1>
+        <h1 className="text-center text-gray-700 text-3xl font-bold mb-5">
+          Asset Register
+        </h1>
         <div className="mb-6">
           {/* <label
-            htmlFor="machineType"
+            htmlFor="assetType"
             className="block text-gray-700 font-semibold mb-2"
           >
-            Machine Type:
+            Asset Type:
           </label> */}
           <select
-            id="machineType"
-            name="machineType"
-            value={formData.machineType}
-            onChange={handleMachineTypeChange}
+            id="assetType"
+            name="assetType"
+            value={formData.assetType}
+            onChange={handleAssetTypeChange}
             className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
             required
           >
-            <option value="">Select Machine Type</option>
-            {machineTypes.map((type) => (
+            <option value="">Select Asset Type</option>
+            {assetTypes.map((type) => (
               <option key={type} value={type}>
                 {type.replace(/_/g, " ")}
               </option>
@@ -114,38 +127,38 @@ function AssetRegForm({ visible, handleClose }) {
           <div className="mb-6">
             <input
               type="text"
-              name="machineName"
-              value={formData.machineName}
+              name="assetName"
+              value={formData.assetName}
               onChange={handleChange}
               className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-              placeholder="Machine Name"
+              placeholder="Asset Name"
               required
             />
           </div>
 
-          {/* Add fields for machine address, machine site, and machine application */}
+          {/* Add fields for asset address, asset site, and asset application */}
           <div className="grid grid-cols-2 gap-6 mb-6">
             <div>
               <input
                 type="text"
-                id="machineAddress"
-                name="machineAddress"
-                value={formData.machineAddress}
+                id="assetAddress"
+                name="assetAddress"
+                value={formData.assetAddress}
                 onChange={handleChange}
                 className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                placeholder="Machine address"
+                placeholder="Asset address"
                 required
               />
             </div>
             <div>
               <input
                 type="text"
-                id="machineSite"
-                name="machineSite"
-                value={formData.machineSite}
+                id="assetSite"
+                name="assetSite"
+                value={formData.assetSite}
                 onChange={handleChange}
                 className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                placeholder="Machine Site"
+                placeholder="Asset Site"
                 required
               />
             </div>
@@ -154,9 +167,9 @@ function AssetRegForm({ visible, handleClose }) {
           <div className="mb-6">
             <input
               type="text"
-              id="machineApplication"
-              name="machineApplication"
-              value={formData.machineApplication}
+              id="assetApplication"
+              name="assetApplication"
+              value={formData.assetApplication}
               onChange={handleChange}
               className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
               placeholder="Maxhine application"
@@ -166,12 +179,12 @@ function AssetRegForm({ visible, handleClose }) {
 
           <div className="mb-6">
             <textarea
-              id="machineDescription"
-              name="machineDescription"
-              value={formData.machineDescription}
+              id="assetDescription"
+              name="assetDescription"
+              value={formData.assetDescription}
               onChange={handleChange}
               className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-              placeholder="Machine description"
+              placeholder="Asset description"
               rows="4"
               required
             />
@@ -179,7 +192,11 @@ function AssetRegForm({ visible, handleClose }) {
 
           {/* Section for inputting sensor data */}
           <div>
-            {formData.sensors.length ? <h2 className="text-lg font-semibold mb-4">Sensor Data</h2>:<></>}
+            {formData.sensors.length ? (
+              <h2 className="text-lg font-semibold mb-4">Sensor Data</h2>
+            ) : (
+              <></>
+            )}
             {formData.sensors.map((sensor, index) => (
               <div key={index} className="border rounded-lg p-4 mb-4">
                 <h3 className="text-md font-semibold mb-2">

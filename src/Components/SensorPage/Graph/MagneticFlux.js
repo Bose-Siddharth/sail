@@ -1,77 +1,102 @@
 //npm install react-apexcharts apexcharts
 
-import React, { useState } from "react";
-import Chart from "react-apexcharts";
+import React, { useState, useEffect, useRef } from 'react';
+import ReactApexChart from 'react-apexcharts';
+
+const XAXISRANGE = 1800000;
+
+const getRandomData = (lastDate) => {
+  const randomDataPoint = Math.floor(Math.random() * 90) + 10;
+  return {
+    x: lastDate + XAXISRANGE,
+    y: randomDataPoint,
+  };
+};
 
 function MagneticFlux({ sensorData }) {
-  const [options, setOptions] = useState({
-    chart: {
-      id: "xyz",
-      animations: {
-        enabled: true,
-        easing: "easeinout",
-        speed: 800,
-        animateGradually: {
-          enabled: false,
-        },
-        dynamicAnimation: {
-          enabled: true,
-          speed: 350,
-        },
-      },
-    },
-    fill: {
-      type: "gradient",
-      gradient: {
-        shadeIntensity: 1,
-        inverseColors: false,
-        opacityFrom: 0.5,
-        opacityTo: 0,
-      },
-    },
-    xaxis: {
-      categories: [
-        "10:00",
-        "10:01",
-        "10:02",
-        "10:03",
-        "10:04",
-        "10:05",
-        "10:06",
-        "10:07",
-        "10:08",
-      ],
-    },
-  });
-
-  const XAxis = [];
-  const YAxis = [];
-  const ZAxis = [];
-
-  for (let index = 0; index < sensorData.length; index++) {
-    XAxis.push(sensorData[index].A.EMF_X);
-    YAxis.push(sensorData[index].A.EMF_Y);
-    ZAxis.push(sensorData[index].A.EMF_Z);
-  }
-
-  const series = [
+  const [series, setSeries] = useState([
     {
-      name: "X-axis",
-      data: XAxis,
-    },
-    {
-      name: "Y-axis",
-      data: YAxis,
-    },
-    {
-      name: "Z-axis",
-      data: ZAxis,
-    },
-  ];
+      data: []
+    }
+  ]);
+
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    let lastDate = Date.now() - XAXISRANGE;
+    const interval = setInterval(() => {
+      lastDate += XAXISRANGE;
+      const newDataPoint = getRandomData(lastDate);
+      setSeries((prevSeries) => [
+        {
+          data: [...prevSeries[0].data, newDataPoint]
+        }
+      ]);
+      if (chartRef.current) {
+        setSeries((prevSeries) => [
+          {
+            data: [...prevSeries[0].data, newDataPoint]
+          }
+        ]);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
-    <div className="m-5 w-full h-full">
-      <Chart options={options} series={series} type="area" width={'100%'} />
+    <div id="chart">
+      <ReactApexChart
+        options={{
+          chart: {
+            id: 'realtime',
+            height: 350,
+            type: 'line',
+            animations: {
+              enabled: true,
+              easing: 'linear',
+              dynamicAnimation: {
+                speed: 1000
+              }
+            },
+            toolbar: {
+              show: false
+            },
+            zoom: {
+              enabled: false
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'smooth'
+          },
+          title: {
+            text: 'Dynamic Updating Chart',
+            align: 'left'
+          },
+          markers: {
+            size: 0
+          },
+          xaxis: {
+            type: 'datetime',
+            range: XAXISRANGE
+          },
+          yaxis: {
+            max: 100
+          },
+          legend: {
+            show: false
+          }
+        }}
+        series={series}
+        type="line"
+        height={350}
+        ref={chartRef}
+      />
     </div>
   );
 }
