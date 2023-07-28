@@ -73,10 +73,10 @@ function AssetRegForm({ visible, handleClose }) {
   };
   if (!visible) return null;
   return (
-    <section className="absolute inset-0 bg-slate-200 bg-opacity-20 backdrop-blur-sm z-50 h-full">
+    <section className="absolute inset-0 bg-slate-200 bg-opacity-20 backdrop-blur-sm z-50 h-min min-h-screen">
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto p-6 pt-10 border rounded-lg shadow-md bg-white relative mt-20"
+        className="max-w-md mx-auto p-6 pt-10 border rounded-lg shadow-md bg-white relative my-20"
       >
         <button
           type="button"
@@ -126,72 +126,52 @@ function AssetRegForm({ visible, handleClose }) {
           {/* Add fields for machine address, machine site, and machine application */}
           <div className="grid grid-cols-2 gap-6 mb-6">
             <div>
-              <label
-                htmlFor="machineAddress"
-                className="block text-gray-700 font-semibold mb-2"
-              >
-                Machine Address:
-              </label>
               <input
                 type="text"
                 id="machineAddress"
                 name="machineAddress"
                 value={formData.machineAddress}
                 onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500"
+                className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                placeholder="Machine address"
                 required
               />
             </div>
             <div>
-              <label
-                htmlFor="machineSite"
-                className="block text-gray-700 font-semibold mb-2"
-              >
-                Machine Site:
-              </label>
               <input
                 type="text"
                 id="machineSite"
                 name="machineSite"
                 value={formData.machineSite}
                 onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500"
+                className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                placeholder="Machine Site"
                 required
               />
             </div>
           </div>
 
           <div className="mb-6">
-            <label
-              htmlFor="machineApplication"
-              className="block text-gray-700 font-semibold mb-2"
-            >
-              Machine Application:
-            </label>
             <input
               type="text"
               id="machineApplication"
               name="machineApplication"
               value={formData.machineApplication}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500"
+              className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+              placeholder="Maxhine application"
               required
             />
           </div>
 
           <div className="mb-6">
-            <label
-              htmlFor="machineDescription"
-              className="block text-gray-700 font-semibold mb-2"
-            >
-              Machine Description:
-            </label>
             <textarea
               id="machineDescription"
               name="machineDescription"
               value={formData.machineDescription}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500"
+              className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+              placeholder="Machine description"
               rows="4"
               required
             />
@@ -199,7 +179,7 @@ function AssetRegForm({ visible, handleClose }) {
 
           {/* Section for inputting sensor data */}
           <div>
-            <h2 className="text-lg font-semibold mb-4">Sensor Data</h2>
+            {formData.sensors.length ? <h2 className="text-lg font-semibold mb-4">Sensor Data</h2>:<></>}
             {formData.sensors.map((sensor, index) => (
               <div key={index} className="border rounded-lg p-4 mb-4">
                 <h3 className="text-md font-semibold mb-2">
@@ -207,36 +187,26 @@ function AssetRegForm({ visible, handleClose }) {
                 </h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <label
-                      htmlFor={`sensorId${index}`}
-                      className="block text-gray-700 font-semibold mb-2"
-                    >
-                      Sensor ID:
-                    </label>
                     <input
                       type="text"
                       id={`sensorId${index}`}
                       name="id"
                       value={sensor.id}
                       onChange={(e) => handleSensorChange(index, e)}
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500"
+                      className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      placeholder="MUID"
                       required
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor={`sensorName${index}`}
-                      className="block text-gray-700 font-semibold mb-2"
-                    >
-                      Sensor Name:
-                    </label>
                     <input
                       type="text"
                       id={`sensorName${index}`}
                       name="name"
                       value={sensor.name}
                       onChange={(e) => handleSensorChange(index, e)}
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500"
+                      className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      placeholder="Name"
                       required
                     />
                   </div>
@@ -244,36 +214,26 @@ function AssetRegForm({ visible, handleClose }) {
 
                 <div className="grid grid-cols-2 gap-6 mt-4">
                   <div>
-                    <label
-                      htmlFor={`sensorAddress${index}`}
-                      className="block text-gray-700 font-semibold mb-2"
-                    >
-                      Sensor Address:
-                    </label>
                     <input
                       type="text"
                       id={`sensorAddress${index}`}
                       name="address"
                       value={sensor.address}
                       onChange={(e) => handleSensorChange(index, e)}
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500"
+                      className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      placeholder="Client"
                       required
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor={`sensorSite${index}`}
-                      className="block text-gray-700 font-semibold mb-2"
-                    >
-                      Sensor Site:
-                    </label>
                     <input
                       type="text"
                       id={`sensorSite${index}`}
                       name="site"
                       value={sensor.site}
                       onChange={(e) => handleSensorChange(index, e)}
-                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500"
+                      className="block w-full px-5 py-2 border rounded-lg bg-white shadow-md placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      placeholder="Site"
                       required
                     />
                   </div>
